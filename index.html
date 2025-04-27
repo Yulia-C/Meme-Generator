@@ -13,35 +13,43 @@
     <div onclick="ontoggleMenu()" class="main-screen"></div>
     <div class="backdrop"></div>
 
-    <header class="main-header">
-        <div class="wrapper">
-            <div class="main-logo">Meme Generator</div>
-            <nav>
-                <ul>
-                    <li class="galery active"><button onclick="onInit()" class="nav-btn">Gallery</button></li>
-                    <li class="memes"><button onclick="onSavedInit()" class="nav-btn">Memes</button></li>
+    <header class="main-header center">
+        <div class="wrapper grid column">
+            <img class="main-logo" src="header/main-logo-2.png">
+            <nav class="main-nav">
+                <ul class="grid column">
+                    <li class="galery active clean-li rounded" onclick="onInit()">
+                        <img class="gallery" src="header/gallery.png">
+
+                    </li>
+                    <li class="memes clean-li rounded" onclick="onSavedInit()">
+                        <img class="memes" src="header/memes.png">
+
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="meme-gallery-page">
+    <section class="meme-gallery-page center rounded-m margin-top">
         <main>
-            <section class="filter-search-container">
-                <div class="search">
+            <section class="filter-search-container grid column ">
+                <div class="search margin-top">
 
-                    <input type="text" class="search-input" placeholder="Search Memes"
+                    <input type="text" class="search-input rounded" placeholder="Search Memes"
                         oninput="onSearchMeme(this.value)">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <div class="key-words-container">
-                    <button onclick="onKeyWordPress(this)" class="keyword k-1">Funny</button>
-                    <button onclick="onKeyWordPress(this)" class="keyword k-2">Cartoon</button>
-                    <button onclick="onKeyWordPress(this)" class="keyword k-3">Coding</button>
+                <div class="key-words-container margin-top rounded">
+                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-1">Funny</a>
+                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-2">Cartoon</a>
+                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-3">Coding</a>
+                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-4">Animal</a>
+                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-5">Cat</a>
                 </div>
             </section>
 
-            <section class="meme-container">
+            <section class="meme-container margin-top">
                 <label class="file-input" for="file-upload-input">
                     Upload Image
                     <input type="file" name="meme" onchange="onMemeUpload(event)" />
@@ -110,7 +118,7 @@
     </section>
 
     <footer>
-        <div class="main-logo">Meme Generator</div>
+        <img class="main-logo" src="header/main-logo-2.png">
         <p> All rights reserved - Yulia Chernyak 2025 ©</p>
         <section class="footer-social-nav">
             <!-- <button class="btn social"><i class="fa-brands fa-linkedin"></i></button>

@@ -1,0 +1,16 @@
+.key-words-container {
+    display: subgrid;
+    width: 95%;
+    background-color: var(--clr-primary-base-1);
+    align-content: center;
+}
+
+.keyword {
+    padding: .8em;
+    font-weight: 600;
+    cursor:pointer;
+}
+
+.keyword:hover{
+    font-size: 1.1em;
+}

@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    line-height: 1.5;
+    color: whitesmoke;
+    font-family: Poppins, Arial;
+}
+
+body {
+    text-align: center;
+    font-size: 1rem;
+    margin: 0;
+    background-color: var(--clr-primary-base-1);
+    color: whitesmoke;
+
+
+}
+
+.meme-gallery-page {
+    background-color: var(--clr-primary-base-4);
+    width: 95%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 1.5em;
+
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

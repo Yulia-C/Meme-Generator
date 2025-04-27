@@ -1,0 +1,23 @@
+.main-nav {
+    display: subgrid;
+}
+.main-nav>ul{
+    padding-inline-start: 40%;
+}
+
+.main-nav>ul>li {
+    background-color: var(--clr-primary-base-5);
+    width: fit-content;
+    padding: .4em .4em .4em .4em;
+    cursor: pointer;
+}
+
+.main-nav>ul>li:hover{
+   background-color:  #35335c;
+}
+
+.main-nav>ul>li img {
+    display:grid;
+    height: 2em;
+    place-self: center;
+}

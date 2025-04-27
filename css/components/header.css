@@ -1,0 +1,7 @@
+.main-header {
+    background-color: var(--clr-primary-base-3);
+    border-radius: 5em;
+    width: 95%;
+    margin-block-start: 1em;
+    /* margin-block-end: 2em; */
+}
