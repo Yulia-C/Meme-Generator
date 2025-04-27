@@ -10,14 +10,17 @@
 </head>
 
 <body onload="onInit()" class="main-layout">
-    <div onclick="ontoggleMenu()" class="main-screen"></div>
-    <div class="backdrop"></div>
+    <div onclick="ontoggleMenu()" class="main-screen">
+
+        <div class="backdrop"></div>
+    </div>
 
     <header class="main-header center">
-        <div class="wrapper grid column">
+        <div class="wrapper flex">
             <img class="main-logo" src="header/main-logo-2.png">
+            <button onclick="ontoggleMenu()" type="button" class="btn-toggle-menu"></button>
             <nav class="main-nav">
-                <ul class="grid column">
+                <ul class="">
                     <li class="galery active clean-li rounded" onclick="onInit()">
                         <img class="gallery" src="header/gallery.png">
 
@@ -31,38 +34,96 @@
         </div>
     </header>
 
-    <section class="meme-gallery-page center rounded-m margin-top">
+    <section class="meme-gallery-page center rounded-m margin-top" hidden>
         <main>
-            <section class="filter-search-container grid column ">
+            <section class="filter-search-container top">
                 <div class="search margin-top">
 
                     <input type="text" class="search-input rounded" placeholder="Search Memes"
                         oninput="onSearchMeme(this.value)">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <div class="key-words-container margin-top rounded">
-                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-1">Funny</a>
-                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-2">Cartoon</a>
-                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-3">Coding</a>
-                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-4">Animal</a>
-                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-5">Cat</a>
+                <div class="key-words-container center margin-top rounded">
+                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-1"> Funny </a>
+                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-2"> Cartoon </a>
+                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-3"> Coding </a>
+                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-4"> Animal </a>
+                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-5">Cat </a>
                 </div>
             </section>
 
-            <section class="meme-container margin-top">
+            <section class="meme-container grid margin-top">
                 <label class="file-input" for="file-upload-input">
-                    Upload Image
-                    <input type="file" name="meme" onchange="onMemeUpload(event)" />
+                    <i class="fa-solid fa-upload"></i> Upload Image
+                    <input type="file" name="meme" onchange="onMemeUpload(event)" hidden />
                 </label>
+
                 <article class="meme-img">
-                    <img src="memes-imgs/003.jpg" alt="meme" onclick="onPickMeme(this)">
+                    <img src="memes-imgs/003.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/004.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/006.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/19.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/005.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/12.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/2.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/5.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/8.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/9.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/Ancient-Aliens.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/drevil.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/img11.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/img12.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/img2.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/img4.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/img5.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/img6.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/leo.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
+                </article>
+                <article class="meme-img">
+                    <img src="memes-imgs/meme1.jpg" class="rounded-m" alt="meme" onclick="onPickMeme(this)">
                 </article>
 
             </section>
         </main>
     </section>
 
-    <section class="meme-editor-page">
+    <section class="meme-editor-page center rounded-m margin-top" >
         <main>
             <div class="canvas-container">
                 <canvas width="400" height="400"></canvas>
@@ -84,11 +145,16 @@
                 </div>
 
                 <div class="text-editors">
-                    <button onclick="onUpdateLineSize(1)" class="btn btn-font"><i class="fa-solid fa-font"></i> +</button>
-                    <button onclick="onUpdateLineSize(-1)" class="btn btn-font"><i class="fa-solid fa-font"></i> -</button>
-                    <button onclick="onSetTxtAlign('left')" class="btn btn-font"><i class="fa-solid fa-align-left"></i></button>
-                    <button onclick="onSetTxtAlign('center')" class="btn btn-font"><i class="fa-solid fa-align-justify"></i></button>
-                    <button onclick="onSetTxtAlign('right')" class="btn btn-font"><i class="fa-solid fa-align-right"></i></button>
+                    <button onclick="onUpdateLineSize(1)" class="btn btn-font"><i class="fa-solid fa-font"></i>
+                        +</button>
+                    <button onclick="onUpdateLineSize(-1)" class="btn btn-font"><i class="fa-solid fa-font"></i>
+                        -</button>
+                    <button onclick="onSetTxtAlign('left')" class="btn btn-font"><i
+                            class="fa-solid fa-align-left"></i></button>
+                    <button onclick="onSetTxtAlign('center')" class="btn btn-font"><i
+                            class="fa-solid fa-align-justify"></i></button>
+                    <button onclick="onSetTxtAlign('right')" class="btn btn-font"><i
+                            class="fa-solid fa-align-right"></i></button>
 
                     <select onchange="onSetFont(this)" class="font-picker">
                         <option value="Arial">Arial </option>
@@ -103,9 +169,12 @@
                 </div>
 
                 <div class="save-container">
-                    <button onclick="onSave()" class="btn btn-save"><i class="fa-solid fa-floppy-disk"></i> Save</button>
-                    <button onclick="onShareMeme(this)" class="btn btn-share"><i class="fa-solid fa-share-from-square"></i> Share</button>
-                    <button onclick="onDownloadMeme(this)" href="#" download="file-name" class="btn btn-download"><i class="fa-solid fa-download"></i> Download</button>
+                    <button onclick="onSave()" class="btn btn-save"><i class="fa-solid fa-floppy-disk"></i>
+                        Save</button>
+                    <button onclick="onShareMeme(this)" class="btn btn-share"><i
+                            class="fa-solid fa-share-from-square"></i> Share</button>
+                    <button onclick="onDownloadMeme(this)" href="#" download="file-name" class="btn btn-download"><i
+                            class="fa-solid fa-download"></i> Download</button>
                 </div>
 
 
@@ -118,15 +187,13 @@
     </section>
 
     <footer>
-        <img class="main-logo" src="header/main-logo-2.png">
         <p> All rights reserved - Yulia Chernyak 2025 ©</p>
         <section class="footer-social-nav">
-            <!-- <button class="btn social"><i class="fa-brands fa-linkedin"></i></button>
-            <button class="btn social"><i class="fa-brands fa-square-github"></i></button> -->
-
+            <!-- <i class="fa-brands fa-linkedin social"></i>
+            <i class="fa-brands fa-square-github social"></i> -->
         </section>
     </footer>
-<script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

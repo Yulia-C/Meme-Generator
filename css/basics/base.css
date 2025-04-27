@@ -9,6 +9,7 @@ html {
 }
 
 body {
+    /* display:grid; */
     text-align: center;
     font-size: 1rem;
     margin: 0;
@@ -18,7 +19,7 @@ body {
 
 }
 
-.meme-gallery-page {
+.meme-gallery-page, .meme-editor-page {
     background-color: var(--clr-primary-base-4);
     width: 95%;
 }
@@ -30,11 +31,14 @@ h4,
 h5,
 h6 {
     margin: 0 0 1.5em;
-
 }
-
 
 a {
     text-decoration: none;
     color: inherit;
 }
+
+.main-nav>ul>li, .keyword, .file-input, img.rounded-m{
+    cursor:pointer;
+}
+

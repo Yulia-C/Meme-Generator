@@ -4,7 +4,7 @@
     padding: 0;
     list-style-type: none;
 }
-
+/* layout helpers */
 .grid {
     display: grid;
 }
@@ -17,8 +17,13 @@
     justify-self: center;
 }
 
-.margin-top{
+.margin-top {
     margin-block-start: 2em;
+}
+
+.flex{
+    display:flex;
+    justify-content: space-between;
 }
 
 /* rounded helper */
@@ -27,7 +32,9 @@
 }
 
 /* meme helper */
-
 .rounded-m {
     border-radius: 20px;
 }
+
+
+

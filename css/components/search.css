@@ -1,11 +1,16 @@
+.filter-search-container {
+    display: grid;
+    grid-template-columns: minmax(100%, 1fr);
+}
+
 .search {
     position: relative;
 }
 
 .search-input {
-    width: 90%;
+    width: 98%;
     font-size: 2em;
-    padding:.4em;
+    padding: .4em;
 
     background-color: var(--clr-primary-base-1);
     color: whitesmoke;
@@ -16,7 +21,7 @@
     color: var(--clr-primary-base-3);
     font-size: 1.8em;
     position: absolute;
-    right: 40px;
+    right: 20px;
     top: 50%;
     transform: translate(-50%, -50%)
 }

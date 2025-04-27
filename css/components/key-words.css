@@ -1,16 +1,17 @@
 .key-words-container {
-    display: subgrid;
-    width: 95%;
+    display: flex;
+    width: 98%;
     background-color: var(--clr-primary-base-1);
-    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .keyword {
-    padding: .8em;
     font-weight: 600;
-    cursor:pointer;
+    font-size: 2em;
 }
 
-.keyword:hover{
-    font-size: 1.1em;
+.keyword:hover {
+    color:var(--clr-primary-base-6);
 }

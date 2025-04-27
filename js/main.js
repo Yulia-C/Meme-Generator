@@ -7,6 +7,8 @@ function onInit(){
 
 function ontoggleMenu(){
     console.log('onToggleMenu');
+        document.body.classList.toggle('menu-open')
+    
 }
 
 function onSavedInit(){

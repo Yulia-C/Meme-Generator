@@ -1,0 +1,113 @@
+/* mobile */
+@media (max-width:940px) {
+    body {
+        position: relative;
+    }
+
+    .backdrop {
+        background-color: rgba(10, 10, 10, 0.722);
+        inset: 0;
+        position: fixed;
+
+        opacity: 0;
+
+        transition: opacity 600ms;
+    }
+
+    .main-header {
+        width: 100%;
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 1;
+        padding: 1em;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 85px;
+        right: 10px;
+        width: 103%;
+        translate: 100%;
+        transition: translate .7s;
+
+    }
+
+    body.menu-open .main-nav {
+        translate: 0;
+    }
+
+    body.menu-open .backdrop {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    .main-nav>ul>li {
+        padding-top: 8%;
+        padding-bottom: 8%;
+        font-size: 1.2em;
+        width: 100%;
+        border-radius: 1em;
+    }
+
+    .meme-gallery-page {
+        width: 100%;
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        right: 50%;
+    }
+
+    footer {
+        position: relative;
+        top: 9420px;
+        padding-bottom: 5px;
+        z-index: 1;
+
+    }
+}
+
+/* small */
+@media (min-width:940px) {
+    .main-nav>ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3em;
+        justify-self: end;
+        /* justify-content: space-evenly; */
+        /* place-content: center; */
+    }
+
+    .meme-container {
+        grid-template-columns: minmax(250px, 1fr) minmax(250px, 1fr);
+    }
+
+    .meme-container>label {
+        font-size: 1.5em;
+    }
+
+    .btn-toggle-menu {
+        display: none;
+    }
+}
+
+/* medium */
+@media (min-width:1100px) {
+    .meme-container {
+        grid-template-columns: minmax(250px, 1fr) minmax(250px, 1fr)minmax(250px, 1fr);
+    }
+
+    .filter-search-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .keyword {
+        font-size: 1.2em;
+    }
+}
+
+/* large */
+@media (min-width:1400px) {
+    .meme-container {
+        grid-template-columns: minmax(250px, 1fr) minmax(250px, 1fr)minmax(250px, 1fr)minmax(250px, 1fr);
+    }
+}
