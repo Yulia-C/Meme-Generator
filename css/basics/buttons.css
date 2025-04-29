@@ -1,0 +1,10 @@
+.btn {
+    border-radius: 15px;
+    font-size: 1.5rem;
+    background-image: linear-gradient(-38deg, var(--clr-primary-base-6) 30%, #527279 100%);
+    padding: .5rem;
+    color: var(--clr-primary-base-5);
+    margin-inline: .31em;
+    height:max-content;
+}
+
