@@ -14,12 +14,13 @@
 }
 
 .meme-container>label:hover {
-    font-size: 1.9em;
+    /* font-size: 1.9em; */
     color: var(--clr-primary-base-6);
     border: 2px solid var(--clr-primary-base-6);
 }
 
 .meme-img>img {
+    /* position:relative; */
     width: 100%;
 }
 

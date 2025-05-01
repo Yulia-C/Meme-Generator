@@ -11,6 +11,8 @@
 
 .grid.column {
     grid-template-columns: 1fr 1fr;
+    gap: 1em;
+
 }
 
 .center {
@@ -36,5 +38,9 @@
     border-radius: 20px;
 }
 
+.selected{
+    border: 2px solid var(--clr-primary-base-6);
+   
+}
 
 

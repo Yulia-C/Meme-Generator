@@ -55,6 +55,15 @@
         top: 100px;
         left: 50%;
         right: 50%;
+        display:none;
+    }
+
+    .meme-editor-page{
+        width: 100%;
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        right: 50%;
     }
 
     footer {
