@@ -55,92 +55,6 @@
             </section>
 
             <section class="meme-container grid margin-top">
-                <label class="file-input" for="file-upload-input">
-                    <i class="fa-solid fa-upload"></i> Upload Image
-                    <input id="file-upload-input" type="file" name="meme" onchange="onMemeUpload(event)" style="display: none;"/>
-                </label>
-
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/003.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/004.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/006.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/19.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/005.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/12.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/2.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/5.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/8.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/9.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/Ancient-Aliens.jpg"
-                        alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/drevil.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/img11.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/img12.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/img2.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/img4.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/img5.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/img6.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/leo.jpg" alt="meme">
-                </article>
-
-                <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/meme1.jpg" alt="meme">
-                </article>
 
             </section>
         </main>
@@ -191,7 +105,7 @@
                         </select>
                         <button class="btn meme-txt-clr">
                             <i class="fa-solid fa-brush"></i>
-                            <input oninput="onSetFillStyle(this.value)" type="color" class="meme-txt-clr" hidden>
+                            <input oninput="onSetFillStyle(this.value)" type="color" class="colorPicker" >
                         </button>
                     </div>
 
@@ -226,6 +140,8 @@
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/meme.service.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/controllers/meme.controller.js"></script>
+    <script src="js/controllers/gallery.controller.js"></script>
 </body>
 
 </html>
