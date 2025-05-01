@@ -84,9 +84,15 @@ console.log('TxtColor', color);
 
 }
 
-function onSave(){
-    // const data = gElCanvas.toDataURL()
+function onSaveMeme() {
+const data = gElCanvas.toDataURL()
+addMeme(data)
+    renderMemes()
 console.log('Saving...');
+}
+function onRemoveMeme(memeIdx){
+    removeMeme(memeIdx)
+    renderMemes()
 }
 
 function onShareMeme(elMeme){
