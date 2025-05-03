@@ -16,7 +16,7 @@
         <div class="wrapper flex">
             <img class="rounded-m main-logo" src="header/main-logo-2.png">
             <button onclick="ontoggleMenu()" type="button" class="btn-toggle-menu"></button>
-            <div class="backdrop"></div>
+            <!-- <div class="backdrop"></div> -->
 
             <nav class="main-nav">
                 <ul class="">
@@ -62,11 +62,11 @@
 
             <div class="edit-wrapper center">
 
-                <!-- <div class="canvas-container margin-top"> -->
-                    <canvas class="canvas-container grid center" width="600" height="400" onmousedown="onDown(event)" onmousemove="onMove(event)"
+                <div class="canvas-container center margin-top">
+                    <canvas class="canvas center" width="600" height="400" onmousedown="onDown(event)" onmousemove="onMove(event)"
                         onmouseup="onUp()" touchstart="onDown(event)" touchmove="onMove(event)"
                         touchend="onUp()"></canvas>
-                <!-- </div> -->
+                </div>
                 <div class="tools-editor rounded-m margin-top">
                     <input oninput="onTypeText(this)" type="text" class="meme-input-text rounded"
                         placeholder="Meme text here">
@@ -121,7 +121,7 @@
                         <form method="POST" enctype="multipart/form-data" onsubmit="onShareMeme(event)">
                             <button class="btn btn-share" type="submit"><i class="fa-solid fa-share-from-square"></i>
                                 Share</button>
-                            <button class="btn btn-download"><a href="#" onclick="onDownloadMeme(this)"
+                            <button class="btn btn-download"><a class="btn" href="#" onclick="onDownloadMeme(this)"
                                     download="file-name">
                                     <i class="fa-solid fa-download"></i> Download</a></button>
                     </div>
