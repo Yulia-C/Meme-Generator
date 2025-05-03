@@ -1,6 +1,38 @@
 'use strict'
 
 
+
+function onSelectMeme(imgId) {
+    const imgData = getMemeById(imgId)
+
+    const img = new Image()
+    img.src = imgData.url
+
+    img.onload = () => {
+        gMeme = {
+            id: null,
+            selectedImg: img,
+            selectedImgId: imgId,
+            selectedLineIdx: 0,
+            lines: [
+                {
+                    txt: 'Meme Text Here',
+                    size: 40,
+                    color: 'white',
+                    align: 'center',
+                    font: 'Impact',
+                    x: gElCanvas.width / 2,
+                    y: 50
+                }
+            ]
+        }
+
+        renderMeme()
+    }
+}
+
+
+
 function onSaveMeme() {
     const data = gElCanvas.toDataURL()
     addMeme(data)
