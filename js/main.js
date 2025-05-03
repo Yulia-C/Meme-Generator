@@ -35,62 +35,15 @@ function onKeyWordPress(word) {
     console.log(word.innerText)
 }
 
-
-
-function onSelectMeme(elMeme) {
-    console.log('Selected');
-    elMeme.classList.toggle('selected')
-
-    if (elMeme.classList.contains('selected')) {
-
-        coverCanvasWithMeme(elMeme)
-    }
+function onTypeText(elTxt) {
+    const meme = getMeme()
+    const currLine = meme.lines[meme.selectedLineIdx]
+    
+    if(!currLine) return
+    currLine.txt = elTxt.value
+    renderMeme()
 }
 
-function coverCanvasWithMeme(elMeme) {
-    gElMeme = elMeme
-    redrawCanvas()
-}
-function redrawCanvas() {
-    if (!gElMeme) return
-
-    const img = gElMeme
-    // const imgAspect = img.naturalWidth / img.naturalHeight
-    // const canvasAspect = gElCanvas.width / gElCanvas.height
-    gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
-
-
-
-    // let drawWidth, drawHeight, offsetX, offsetY
-
-    // if (canvasAspect > imgAspect) {
-
-    //     drawHeight = gElCanvas.height
-    //     drawWidth = img.naturalWidth * (drawHeight / img.naturalHeight)
-    // } else {
-
-    //     drawWidth = gElCanvas.width
-    //     drawHeight = img.naturalHeight * (drawWidth / img.naturalWidth)
-    // }
-
-    // offsetX = (gElCanvas.width - drawWidth) / 2
-    // offsetY = (gElCanvas.height - drawHeight) / 2
-
-    // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-    // gCtx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight)
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-
-}
-
-
-
-
-
-function onTypeText() {
-    console.log('Typing...');
-
-
-}
 function onSwitchLine() {
     console.log('onSwitchLine')
 
