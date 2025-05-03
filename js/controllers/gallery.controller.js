@@ -2,7 +2,7 @@
 
 function renderMemeGallery() {
     const memeImgs = getMemeImgs()
-    console.log('memeImgs:', memeImgs)
+    // console.log('memeImgs:', memeImgs)
 
     const elMemeContainer = document.querySelector('.meme-container')
     elMemeContainer.innerHTML =
@@ -13,7 +13,7 @@ function renderMemeGallery() {
                 ${memeImgs.map(meme => {
             return `
                     <article class="meme-img">
-                    <img onclick="onSelectMeme(this)" class="rounded-m meme-img" src="memes-imgs/${meme.id}.jpg" alt="meme">
+                    <img onclick="onSelectMeme(${meme.id}, this)" class="rounded-m meme-img" src="memes-imgs/${meme.id}.jpg" alt="meme">
                     </article>`
         }).join('')}`
 
