@@ -1,90 +1,79 @@
 'use strict'
 const STORAGE_KEY = 'memeDB'
 
-let gMeme = loadFromStorage(STORAGE_KEY) || []
+let gSavedMemes = loadFromStorage(STORAGE_KEY) || []
+let gMeme = {
+    id: null,
+    selectedImgId: null,
+    selectedLineIdx: 0,
+    lines: [
+        {
+            txt: 'Meme Text Here',
+            size: 40,
+            color: 'white',
+            align: 'center',
+            font: 'Impact',
+            x: 200,
+            y: 50
+        }
+    ]
+}
 
-
-
-var gImgs = _createMemeImgs(25)
-
+var gImgs
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
-function getMemeImgs(){
-    return gImgs
-}
 
 function getMeme() {
-    //  gMeme = {
-    //     selectedImgId: 2,
-    //     selectedLineIdx: 0,
-    //     lines: [
-    //         {
-    //             txt: 'I sometimes eat Falafel',
-    //             size: 20,
-    //             color: 'red',
-    //             align: 'center',
-    //             font: 'Arial',
-    //         }
-    //     ]
-    // }
     return gMeme
 }
 
-function removeMeme(memeId) {
-    const memeIdx = gMeme.findIndex(meme => meme.id === memeId)
-    gMeme.splice(memeIdx, 1)
-    _saveMemesToStorage()
+function getSavedMemes() {
+    return gSavedMemes
 }
 
 function addMeme(data) {
-    const meme = _createMeme(data)
-    gMeme.unshift(meme)
+    const memeToSave = {
+        id: makeId(),
+        data, 
+        selectedImgId: gMeme.selectedImgId,
+        selectedLineIdx: gMeme.selectedLineIdx,
+        lines: gMeme.lines.map(line => ({ ...line })) 
+    }
+    gSavedMemes.unshift(memeToSave)
     _saveMemesToStorage()
-    return meme
+    return memeToSave
+}
+
+function removeMeme(memeId) {
+    const memeIdx = gSavedMemes.findIndex(meme => meme.id === memeId)
+    gSavedMemes.splice(memeIdx, 1)
+    _saveMemesToStorage()
 }
 
 function getMemeById(memeIdx) {
-    const meme = gMeme.find(meme => meme.id === memeIdx)
-    return meme
+    return gImgs.find(meme => meme.id === memeIdx)
 }
 
-function _createMeme(data){
-    return {
-        id:makeId(3),
-        data
-    }
-    // gMeme = {
-    //     selectedImgId: 2,
-    //     selectedLineIdx: 0,
-    //     lines: [
-    //         {
-    //             txt: 'I sometimes eat Falafel',
-    //             size: 20,
-    //             color: 'red',
-    //             align: 'center',
-    //             font: 'Arial',
-    //         }
-    //     ]
-    // }
-    
-   
-}
 
 function _createMemeImgs(count) {
     const memes = []
     for (var i = 0; i < count; i++) {
         memes[i] = _createMemeImg(i + 1)
     }
-    console.log('memes:', memes)
+    // console.log('memes:', memes)
     return memes
 }
 
+function getMemeImgs() {
+    return gImgs = _createMemeImgs(25)
+}
+
 function _createMemeImg(id = 1) {
-    const meme = { id, url: `img/${id}.jpg`, keywords: getKeyWords() }
+    const meme = { id, url: `memes-imgs/${id}.jpg`, keywords: getKeyWords() }
     return meme
 }
 
 function _saveMemesToStorage() {
-    saveToStorage(STORAGE_KEY, gMeme)
+    saveToStorage(STORAGE_KEY, gSavedMemes)
 }
