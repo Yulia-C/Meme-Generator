@@ -12,7 +12,7 @@ function onInit() {
 
 
     onResize()
-    renderMeme({ showSelection: true })
+    renderMeme()
     renderSavedMemes()
     renderMemeGallery()
 
@@ -20,7 +20,7 @@ function onInit() {
 }
 
 function onResize() {
-    renderMeme({ showSelection: true })
+    renderMeme()
 }
 
 
@@ -58,7 +58,7 @@ function onSwitchLine() {
 
 function onAddLine() {
     console.log('onAddLine')
-    // renderMeme({ showSelection: false })
+    renderMeme({ showSelection: false })
     addTxtLine()
 
     renderMeme({ showSelection: true })

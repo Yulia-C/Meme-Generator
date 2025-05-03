@@ -42,3 +42,11 @@ a {
     cursor:pointer;
 }
 
+.colorPicker{
+    background-color: transparent; 
+    color:transparent;
+    border: transparent;
+}
+
+
+

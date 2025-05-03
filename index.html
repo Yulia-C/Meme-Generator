@@ -10,25 +10,22 @@
 </head>
 
 <body onload="onInit()" class="main-layout" onresize="onResize()">
-    <div onclick="ontoggleMenu()" class="main-screen">
-
-        <div class="backdrop"></div>
-    </div>
+    <div onclick="ontoggleMenu()" class="main-screen"> </div>
 
     <header class="main-header center">
         <div class="wrapper flex">
-            <img class="rounded-m meme-img" class="main-logo" src="header/main-logo-2.png">
+            <img class="rounded-m main-logo" src="header/main-logo-2.png">
             <button onclick="ontoggleMenu()" type="button" class="btn-toggle-menu"></button>
+            <div class="backdrop"></div>
+
             <nav class="main-nav">
                 <ul class="">
                     <li class="galery active clean-li rounded" onclick="onInit()">
-                        <img class="rounded-m meme-img" class="gallery"
-                            src="header/gallery.png">
+                        <img class="rounded-m meme-img" class="gallery" src="header/gallery.png">
 
                     </li>
                     <li class="memes clean-li rounded" onclick="onSavedInit()">
-                        <img class="rounded-m meme-img" class="memes"
-                            src="header/memes.png">
+                        <img class="rounded-m meme-img" class="memes" src="header/memes.png">
 
                     </li>
                 </ul>
@@ -41,8 +38,8 @@
             <section class="filter-search-container top">
                 <div class="search margin-top">
 
-                    <input type="text" class="search-input rounded" placeholder="Search Memes"
-                        oninput="onSearchMeme(this.value)">
+                    <input type="text" class="search-input rounded" placeholder="Search Memes" 
+                    oninput="onSearchMeme(this.value)">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <div class="key-words-container center margin-top rounded">
@@ -65,16 +62,14 @@
 
             <div class="edit-wrapper center">
 
-                <div class="canvas-container">
-                    <canvas width="600" height="500"
-                    onmousedown="onDown(event)" onmousemove="onMove(event)"
-                     onmouseup="onUp()"
-                     touchstart="onDown(event)"
-                     touchmove="onMove(event)"
-                     touchend="onUp()"></canvas>
-                </div>
-                <div class="tools-editor rounded-m">
-                    <input oninput="onTypeText(this)" type="text" class="meme-input-text rounded" placeholder="Meme text here">
+                <!-- <div class="canvas-container margin-top"> -->
+                    <canvas class="canvas-container grid center" width="600" height="400" onmousedown="onDown(event)" onmousemove="onMove(event)"
+                        onmouseup="onUp()" touchstart="onDown(event)" touchmove="onMove(event)"
+                        touchend="onUp()"></canvas>
+                <!-- </div> -->
+                <div class="tools-editor rounded-m margin-top">
+                    <input oninput="onTypeText(this)" type="text" class="meme-input-text rounded"
+                        placeholder="Meme text here">
 
                     <div class="input-editors">
                         <button title="Switch" class="btn btn-input switch-input">
@@ -90,27 +85,33 @@
                     </div>
 
                     <div class="text-editors">
-                        <button onclick="onUpdateLineSize(1)" class="btn btn-font"><i class="fa-solid fa-font"></i>
+                        <button onclick="onUpdateLineSize(3)" class="btn btn-font"><i class="fa-solid fa-font"></i>
                             +</button>
-                        <button onclick="onUpdateLineSize(-1)" class="btn btn-font"><i class="fa-solid fa-font"></i>
+                        <button onclick="onUpdateLineSize(-3)" class="btn btn-font"><i class="fa-solid fa-font"></i>
                             -</button>
-                        <button onclick="onSetTxtAlign('left')" class="btn btn-font"><i
+                        <button onclick="onSetTxtAlign('right')" class="btn btn-font"><i
                                 class="fa-solid fa-align-left"></i></button>
                         <button onclick="onSetTxtAlign('center')" class="btn btn-font"><i
                                 class="fa-solid fa-align-justify"></i></button>
-                        <button onclick="onSetTxtAlign('right')" class="btn btn-font"><i
+                        <button onclick="onSetTxtAlign('left')" class="btn btn-font"><i
                                 class="fa-solid fa-align-right"></i></button>
 
-                        <select onchange="onSetFont(this)" class="font-picker">
-                            <option value="Arial">Arial </option>
+                        <select onchange="onSetFont(this.value)" class="font-picker">
+                            <option value="arial">Arial </option>
+                            <option value="impact">Impact </option>
                             <option value="comic-sans">Comic Sans</option>
                             <option value="courier new">Courier New</option>
                             <option value="georgia">Georgia</option>
                             <option value="fa" class="fa">Fa</option>
                         </select>
-                        <button class="btn meme-txt-clr">
-                            <i class="fa-solid fa-brush"></i>
-                            <input oninput="onSetFillStyle(this.value)" type="color" class="colorPicker" >
+                    
+                        <button class="btn meme-fill-clr">
+                            <input oninput="onSetFillStyle(this.value)" type="color" class="colorPicker">
+                            <i class="fa-solid fa-fill-drip"></i>
+                        </button>
+                        <button class="btn meme-line-clr">
+                            <i class="fa-solid fa-paintbrush"></i>
+                            <input oninput="onSetLineStyle(this.value)" type="color" class="colorPicker">
                         </button>
                     </div>
 
@@ -120,8 +121,9 @@
                         <form method="POST" enctype="multipart/form-data" onsubmit="onShareMeme(event)">
                             <button class="btn btn-share" type="submit"><i class="fa-solid fa-share-from-square"></i>
                                 Share</button>
-                            <button class="btn btn-download" ><a href="#" onclick="onDownloadMeme(this)" download="file-name"> 
-                               <i class="fa-solid fa-download"></i> Download</a></button>
+                            <button class="btn btn-download"><a href="#" onclick="onDownloadMeme(this)"
+                                    download="file-name">
+                                    <i class="fa-solid fa-download"></i> Download</a></button>
                     </div>
 
 
@@ -131,9 +133,9 @@
     </section>
 
     <section class="meme-saved-page grid column center">
-        <main>balsjdljash</main>
+        <main></main>
     </section>
-<div class="share-container"></div>
+    <div class="share-container"></div>
     <footer>
         <p> All rights reserved - Yulia Chernyak 2025 ©</p>
         <section class="footer-social-nav">
