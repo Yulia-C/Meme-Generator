@@ -23,6 +23,7 @@ var gImgs
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
+//Crudl functions
 
 function getMeme() {
     return gMeme
@@ -32,14 +33,19 @@ function getSavedMemes() {
     return gSavedMemes
 }
 
-function addMeme(data) {
+function getSavedMemeById(idx) {
+    return gSavedMemes.find(meme => meme.id === idx)
+}
+
+function addMeme(meme) {
     const memeToSave = {
         id: makeId(),
-        data, 
-        selectedImgId: gMeme.selectedImgId,
-        selectedLineIdx: gMeme.selectedLineIdx,
-        lines: gMeme.lines.map(line => ({ ...line })) 
+        data: meme.data,
+        selectedImgId: meme.selectedImgId,
+        selectedLineIdx: meme.selectedLineIdx,
+        lines: meme.lines.map(line => ({ ...line }))
     }
+
     gSavedMemes.unshift(memeToSave)
     _saveMemesToStorage()
     return memeToSave
@@ -55,6 +61,45 @@ function getMemeById(memeIdx) {
     return gImgs.find(meme => meme.id === memeIdx)
 }
 
+
+//Text crudl functions
+
+function addTxtLine() {
+    const line = {
+        txt: 'Another Meme Text Here',
+        size: 40,
+        color: 'white',
+        align: 'center',
+        font: 'Impact',
+        x: 300,
+        y: 250
+    }
+    gMeme.lines.push(line)
+    _saveMemesToStorage()
+}
+
+function deleteTxtLine(lineIdx) {
+    const currLineIdx = gMeme.lines.findIndex(line => line.id === lineIdx)
+    gMeme.lines.splice(currLineIdx, 1)
+    _saveMemesToStorage()
+}
+
+function switchLine(lineIdx) {
+    // let currLineIdx = gMeme.lines.findIndex(line => line.id === lineIdx)
+    // currLineIdx = gMeme.selectedLineIdx
+    //Need to improve
+}
+
+function updateLineSize(diff) {
+    const idx = gMeme.selectedLineIdx
+    var currLineSize = gMeme.lines[idx].size += diff
+    _saveMemesToStorage()
+
+}
+
+
+
+//Factory functions
 
 function _createMemeImgs(count) {
     const memes = []

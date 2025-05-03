@@ -12,7 +12,7 @@ function onInit() {
 
 
     onResize()
-    renderMeme()
+    renderMeme({ showSelection: true })
     renderSavedMemes()
     renderMemeGallery()
 
@@ -20,7 +20,7 @@ function onInit() {
 }
 
 function onResize() {
-    renderMeme()
+    renderMeme({ showSelection: true })
 }
 
 
@@ -38,30 +38,45 @@ function onKeyWordPress(word) {
 }
 
 function onTypeText(elTxt) {
+
     const meme = getMeme()
     const currLine = meme.lines[meme.selectedLineIdx]
-
     if (!currLine) return
     currLine.txt = elTxt.value
     renderMeme()
 }
 
-function onSwitchLine(diff) {
-
-    console.log('onSwitchLine')
+function onSwitchLine() {
+    const meme = getMeme()
+    let lineIdx = meme.selectedLineIdx
+    switchLine(lineIdx)
+    renderMeme()
+    console.log('lineIdx:', lineIdx)
+    // console.log('onSwitchLine')
 
 }
+
 function onAddLine() {
     console.log('onAddLine')
+    renderMeme({ showSelection: false })
+    addTxtLine()
+
+    renderMeme({ showSelection: true })
 
 }
-function onDeleteLine() {
+function onRemoveLine() {
+    const meme = getMeme()
+    const lineIdx = meme.selectedLineIdx
+    deleteTxtLine(lineIdx)
     console.log('onDeleteLine')
+    renderMeme()
 
 }
 
 function onUpdateLineSize(diff) {
-    console.log('diff:', diff)
+    updateLineSize(diff)
+
+    renderMeme()
 }
 
 function onSetTxtAlign(align) {

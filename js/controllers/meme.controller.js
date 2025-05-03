@@ -4,7 +4,7 @@
 
 function onSelectMeme(imgId) {
     const imgData = getMemeById(imgId)
-    
+
     const img = new Image()
     img.src = imgData.url
 
@@ -17,7 +17,7 @@ function onSelectMeme(imgId) {
             lines: [
                 {
                     txt: 'Meme Text Here',
-                    size: 40,
+                    size:  40 ,
                     color: 'white',
                     align: 'center',
                     font: 'Impact',
@@ -31,7 +31,7 @@ function onSelectMeme(imgId) {
     }
 }
 
-function renderMeme() {
+function renderMeme({ showSelection = true } = {}) {
     const meme = getMeme()
     const img = meme.selectedImg
     if (!img) return
@@ -39,46 +39,111 @@ function renderMeme() {
     gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
-    meme.lines.forEach(line => drawText(line))
+    meme.lines.forEach((line, idx) => {
+        drawText(line)
+        if (showSelection && idx === meme.selectedLineIdx) {
+            drawTextBox(line)
+        }
+    })
+
+    updateInputPlaceholder()
 }
 
 function drawText(line) {
+
     gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = line.color
-    gCtx.font = `${line.size}px ${line.font}`
+    gCtx.font = `${line.size +'px'} ${line.font}`
     gCtx.textAlign = line.align
 
     gCtx.fillText(line.txt, line.x, line.y)
     gCtx.strokeText(line.txt, line.x, line.y)
 }
 
+function drawTextBox(line) {
+    const textWidth = gCtx.measureText(line.txt).width
+    const padding = 10
+    const height = line.size + 10
+
+    let x = line.x
+    let y = line.y
+
+    if (line.align === 'center') {
+        x -= textWidth / 2
+    } else if (line.align === 'right') {
+        x -= textWidth
+    }
+
+    gCtx.beginPath()
+    gCtx.setLineDash([4, 3])
+    gCtx.strokeStyle = 'white'
+    gCtx.lineWidth = 2
+    gCtx.rect(x - padding / 2, y - line.size, textWidth + padding, height)
+    gCtx.stroke()
+    gCtx.setLineDash([])
+
+}
+
 
 function onSaveMeme() {
-    // const meme = addMeme(data)
-    const data = gElCanvas.toDataURL()
-    addMeme(data)
+
+    renderMeme({ showSelection: false })
+
+    // const dataUrl = gElCanvas.toDataURL()
+    const memeCopy = JSON.parse(JSON.stringify(getMeme()))
+    memeCopy.data = gElCanvas.toDataURL()
+    addMeme(memeCopy)
+    renderMeme({ showSelection: true })
     renderSavedMemes()
+    // console.log('Saving...');
+
     console.log('Saving...');
 }
 
 function renderSavedMemes() {
     const memes = getSavedMemes()
-    console.log('meme:', memes)
+    // console.log('meme:', memes)
     const elSavedMemes = document.querySelector('.meme-saved-page')
     elSavedMemes.innerHTML = memes.map(meme => {
         return `
         <article class="meme-img">
             <button class="remove btn" onclick="onRemoveMeme('${meme.id}')">X</button>
-                    <img onclick="onSelectMeme(${meme.id})" class="rounded-m meme-img" src="${meme.data}" alt="meme">
+                    <img onclick="onSelectFromSaved('${meme.id}')" class="rounded-m meme-img" src="${meme.data}" alt="meme">
                 </article>`
     }).join('')
 }
 
+function onSelectFromSaved(memeId) {
+    let savedMeme = getSavedMemeById(memeId)
+    console.log('savedMeme:', savedMeme)
+    const img = new Image()
+    img.onload = () => {
+        gMeme = {
+            id: savedMeme.id,
+            selectedImg: img,
+            selectedImgId: savedMeme.selectedImgId || null,
+            selectedLineIdx: savedMeme.selectedLineIdx || 0,
+            lines: savedMeme.lines.map(line => ({ ...line }))
+        }
+        renderMeme()
+    }
+    img.src = savedMeme.data
+}
 
 function onRemoveMeme(memeIdx) {
     removeMeme(memeIdx)
     renderSavedMemes()
+}
+
+
+function updateInputPlaceholder() {
+    const meme = getMeme()
+    const currLine = meme.lines[meme.selectedLineIdx]
+    const elInput = document.querySelector('.meme-input-text')
+
+    if (!currLine) return
+    elInput.placeholder = currLine.txt || 'Meme text here'
 }
 
 // onDownload
@@ -129,7 +194,7 @@ async function uploadImg(imgData, onSuccess) {
 // onUpload
 function onMemeUpload(ev) {
     console.log('ev:', ev)
-    loadMemeFromInput(ev, img =>{
+    loadMemeFromInput(ev, img => {
         gMeme = {
             id: null,
             selectedImg: img,
