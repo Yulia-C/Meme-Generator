@@ -17,8 +17,9 @@ function onSelectMeme(imgId) {
             lines: [
                 {
                     txt: 'Meme Text Here',
-                    size:  40 ,
-                    color: 'white',
+                    size: 40,
+                    fill: 'white',
+                    color: 'black',
                     align: 'center',
                     font: 'Impact',
                     x: gElCanvas.width / 2,
@@ -52,9 +53,9 @@ function renderMeme({ showSelection = true } = {}) {
 function drawText(line) {
 
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
+    gCtx.strokeStyle = line.fill
     gCtx.fillStyle = line.color
-    gCtx.font = `${line.size +'px'} ${line.font}`
+    gCtx.font = `${line.size + 'px'} ${line.font}`
     gCtx.textAlign = line.align
 
     gCtx.fillText(line.txt, line.x, line.y)

@@ -58,7 +58,7 @@ function onSwitchLine() {
 
 function onAddLine() {
     console.log('onAddLine')
-    renderMeme({ showSelection: false })
+    // renderMeme({ showSelection: false })
     addTxtLine()
 
     renderMeme({ showSelection: true })
@@ -75,20 +75,31 @@ function onRemoveLine() {
 
 function onUpdateLineSize(diff) {
     updateLineSize(diff)
-
     renderMeme()
 }
 
 function onSetTxtAlign(align) {
+    setTextAlign(align)
+    renderMeme()
     console.log('align:', align)
 }
 
 function onSetFont(elFont) {
     console.log('elFont:', elFont)
+    setFontStyle(elFont)
+renderMeme()
 }
 
 function onSetFillStyle(color) {
+    setFontColor(color)
     console.log('TxtColor', color);
+    renderMeme()
+
+}
+function onSetLineStyle(color) {
+     setFontLineColor(color)
+        console.log('LineColor', color);
+    renderMeme()
 
 }
 

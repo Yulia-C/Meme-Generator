@@ -11,6 +11,7 @@ let gMeme = {
             txt: 'Meme Text Here',
             size: 40,
             color: 'white',
+            fill: 'black',
             align: 'center',
             font: 'Impact',
             x: 200,
@@ -69,12 +70,14 @@ function addTxtLine() {
         txt: 'Another Meme Text Here',
         size: 40,
         color: 'white',
+        fill: 'black',
         align: 'center',
         font: 'Impact',
         x: 300,
         y: 250
     }
     gMeme.lines.push(line)
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
     _saveMemesToStorage()
 }
 
@@ -94,7 +97,25 @@ function updateLineSize(diff) {
     const idx = gMeme.selectedLineIdx
     var currLineSize = gMeme.lines[idx].size += diff
     _saveMemesToStorage()
+}
 
+function setTextAlign(align) {
+    const idx = gMeme.selectedLineIdx
+    var currAlign = gMeme.lines[idx].align = align
+}
+
+function setFontStyle(font) {
+    const idx = gMeme.selectedLineIdx
+    var currStyle = gMeme.lines[idx].font = font
+}
+
+function setFontColor(color) {
+    const idx = gMeme.selectedLineIdx
+    var currColor = gMeme.lines[idx].color = color
+}
+function setFontLineColor(color) {
+    const idx = gMeme.selectedLineIdx
+    var currColor = gMeme.lines[idx].fill = color
 }
 
 
