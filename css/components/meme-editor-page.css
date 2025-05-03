@@ -1,8 +1,9 @@
  .edit-wrapper {
-     display: grid;
-     grid-template-columns: 1fr 1fr;
+     /* display: grid; */
+     /* grid-template-rows: 1fr 1fr; */
      gap: 20px;
      padding: 1em;
+     width: 100%;
  }
 
  .canvas-container {
@@ -18,12 +19,11 @@
 
 
  .tools-editor {
-     grid-column: 2;
-     padding: 2em;
-     ;
+     /* grid-row: 2; */
+     /* padding: 1em; */
      gap: 1em;
      /* max-width:700px; */
-     /* font-size: 1.rem; */
+     /* font-size: 1.5rem; */
      display: flex;
      justify-content: space-evenly;
      align-items: center;
@@ -34,7 +34,7 @@
 
  .meme-input-text {
      width: 90%;
-     font-size: 1.5rem;
+     font-size: 1.9rem;
      padding: .4rem;
      background-color: var(--clr-primary-base-1);
      color: whitesmoke;
@@ -53,4 +53,6 @@
      display: flex;
      flex-wrap: wrap;
      justify-content: space-evenly;
- }
+     row-gap: 1em;
+
+    }

@@ -1,24 +1,27 @@
 'use strict'
 
-var gElCanvas
-var gCtx
-var gElMeme = null
+let gElCanvas
+let gCtx
+let gIsDragging = false
+let gStartPos = null
 
 function onInit() {
     console.log('Hi');
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
-    window.addEventListener('resize', onResize)
+    // window.addEventListener('resize', onResize)
 
     onResize()
     renderMeme()
-    renderMemeGallery()    
+    renderSavedMemes()
+    renderMemeGallery()
+
+
 }
 
 function onResize() {
-    resizeCanvas()
-    redrawCanvas()
+    renderMeme()
 }
 
 
@@ -74,23 +77,81 @@ function onSetFillStyle(color) {
 
 }
 
+function onDown(ev) {
+    const pos = getEvPos(ev)
+    const lineIdx = getLineAtPos(pos)
+    const meme = getMeme()
 
+    if (lineIdx === -1) return
 
+    meme.selectedLineIdx = lineIdx
+    gIsDragging = true
+    gStartPos = pos
+    document.body.style.cursor = 'grabbing'
 
-function onDownloadMeme(elMeme) {
-    console.log(elMeme);
-
-    const dataUrl = gElCanvas.toDataURL()
-    elMeme.href = dataUrl
-    elMeme.download = 'my-meme'
 }
 
+function onMove(ev) {
+    if (!gIsDragging) return
+    const meme = getMeme()
 
-function resizeCanvas() {
 
-    const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.offsetWidth - 2
-    gElCanvas.height = elContainer.offsetHeight - 2
+    const pos = getEvPos(ev)
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+
+    const line = meme.lines[meme.selectedLineIdx]
+    line.x += dx
+    line.y += dy
+
+    gStartPos = pos
+    renderMeme()
+}
+
+function onUp() {
+    gIsDragging = false
+    document.body.style.cursor = 'grab'
+
+}
+
+function getEvPos(ev) {
+    const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+
+    // let pos = {
+    //     x: ev.offsetX,
+    //     y: ev.offsetY,
+    //   }
+    
+    //   if (TOUCH_EVS.includes(ev.type)) {
+    //     // Prevent triggering the mouse ev
+    //     ev.preventDefault()
+    //     // Gets the first touch point
+    //     ev = ev.changedTouches[0]
+    //     // Calc the right pos according to the touch screen
+    //     pos = {
+    //       x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+    //       y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+    //     }
+    //   }
+    //   return pos
+    const rect = gElCanvas.getBoundingClientRect()
+    return {
+        x: ev.clientX - rect.left,
+        y: ev.clientY - rect.top
+    }
+}
+
+function getLineAtPos(pos) {
+    return gMeme.lines.findIndex(line => {
+        const textWidth = gCtx.measureText(line.txt).width
+        const textHeight = line.size
+        return (
+            pos.x >= line.x - textWidth / 2 &&
+            pos.x <= line.x + textWidth / 2 &&
+            pos.y >= line.y - textHeight &&
+            pos.y <= line.y
+        )
+    })
 }
 
 // mobile meny toggle

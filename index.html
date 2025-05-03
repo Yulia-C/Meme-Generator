@@ -66,15 +66,16 @@
             <div class="edit-wrapper center">
 
                 <div class="canvas-container">
-                    <canvas width="600" height="500"></canvas>
+                    <canvas width="600" height="500"
+                    onmousedown="onDown(event)" onmousemove="onMove(event)" onmouseup="onUp()"></canvas>
                 </div>
                 <div class="tools-editor rounded-m">
-                    <input oninput="onTypeText()" type="text" class="meme-input-text rounded" placeholder="Meme text here">
+                    <input oninput="onTypeText(this)" type="text" class="meme-input-text rounded" placeholder="Meme text here">
 
                     <div class="input-editors">
-                        <button onclick="onSwitchLine()" title="Switch" class="btn btn-input switch-input">
-                            <i class="fa-solid fa-arrow-up-long"></i>
-                            <i class="fa-solid fa-arrow-down-long"></i>
+                        <button title="Switch" class="btn btn-input switch-input">
+                            <i onclick="onSwitchLine()" class="fa-solid fa-arrow-up-long"></i>
+                            <i onclick="onSwitchLine()" class="fa-solid fa-arrow-down-long"></i>
                         </button>
                         <button onclick="onAddLine()" title="Add" class="btn btn-input add-input">
                             <i class="fa-solid fa-plus"></i>
@@ -126,9 +127,9 @@
     </section>
 
     <section class="meme-saved-page grid column center">
-        <main></main>
+        <main>balsjdljash</main>
     </section>
-
+<div class="share-container"></div>
     <footer>
         <p> All rights reserved - Yulia Chernyak 2025 ©</p>
         <section class="footer-social-nav">
@@ -139,9 +140,9 @@
     <script src="js/services/utils.service.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/meme.service.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/controllers/meme.controller.js"></script>
     <script src="js/controllers/gallery.controller.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
