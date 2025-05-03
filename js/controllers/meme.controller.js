@@ -31,19 +31,41 @@ function onSelectMeme(imgId) {
     }
 }
 
+function renderMeme() {
+    const meme = getMeme()
+    const img = meme.selectedImg
+    if (!img) return
+
+    gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+
+    meme.lines.forEach(line => drawText(line))
+}
+
+function drawText(line) {
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = 'black'
+    gCtx.fillStyle = line.color
+    gCtx.font = `${line.size}px ${line.font}`
+    gCtx.textAlign = line.align
+
+    gCtx.fillText(line.txt, line.x, line.y)
+    gCtx.strokeText(line.txt, line.x, line.y)
+}
 
 
 function onSaveMeme() {
+    // const meme = addMeme(data)
     const data = gElCanvas.toDataURL()
     addMeme(data)
-    renderMeme()
+    renderSavedMemes()
     console.log('Saving...');
 }
 
-function renderMeme() {
-    const memes = getMeme()
+function renderSavedMemes() {
+    const memes = getSavedMemes()
+    console.log('meme:', memes)
     const elSavedMemes = document.querySelector('.meme-saved-page')
-
     elSavedMemes.innerHTML = memes.map(meme => {
         return `
         <article class="meme-img">
@@ -53,12 +75,22 @@ function renderMeme() {
     }).join('')
 }
 
-function onRemoveMeme(memeIdx){
+
+function onRemoveMeme(memeIdx) {
     removeMeme(memeIdx)
-    renderMeme()
+    renderSavedMemes()
 }
 
-// onSahare
+// onDownload
+function onDownloadMeme(elMeme) {
+    console.log(elMeme);
+
+    const dataUrl = gElCanvas.toDataURL()
+    elMeme.href = dataUrl
+    elMeme.download = 'my-meme'
+}
+
+// onShare
 function onShareMeme(ev) {
     console.log('sharing...');
 
@@ -96,10 +128,12 @@ async function uploadImg(imgData, onSuccess) {
 
 // onUpload
 function onMemeUpload(ev) {
-    loadMemeFromInput(ev, coverCanvasWithMeme)
+    loadMemeFromInput(ev, redrawCanvas)
     console.log('ev:', ev)
 }
 function loadMemeFromInput(ev, onImageReady) {
+    document.querySelector('.share-container').innerHTML = ''
+
     const reader = new FileReader()
 
     reader.onload = function (event) {
