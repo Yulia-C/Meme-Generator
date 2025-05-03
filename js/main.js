@@ -10,7 +10,6 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
-    // window.addEventListener('resize', onResize)
 
     onResize()
     renderMeme()
@@ -41,13 +40,14 @@ function onKeyWordPress(word) {
 function onTypeText(elTxt) {
     const meme = getMeme()
     const currLine = meme.lines[meme.selectedLineIdx]
-    
-    if(!currLine) return
+
+    if (!currLine) return
     currLine.txt = elTxt.value
     renderMeme()
 }
 
-function onSwitchLine() {
+function onSwitchLine(diff) {
+
     console.log('onSwitchLine')
 
 }
@@ -115,25 +115,8 @@ function onUp() {
 }
 
 function getEvPos(ev) {
-    const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
-
-    // let pos = {
-    //     x: ev.offsetX,
-    //     y: ev.offsetY,
-    //   }
-    
-    //   if (TOUCH_EVS.includes(ev.type)) {
-    //     // Prevent triggering the mouse ev
-    //     ev.preventDefault()
-    //     // Gets the first touch point
-    //     ev = ev.changedTouches[0]
-    //     // Calc the right pos according to the touch screen
-    //     pos = {
-    //       x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-    //       y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-    //     }
-    //   }
-    //   return pos
+    const clientX = ev.type.startsWith('touch') ? ev.touches[0].clientX : ev.clientX
+    const clientY = ev.type.startsWith('touch') ? ev.touches[0].clientY : ev.clientY
     const rect = gElCanvas.getBoundingClientRect()
     return {
         x: ev.clientX - rect.left,

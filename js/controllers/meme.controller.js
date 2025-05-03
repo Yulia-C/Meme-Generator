@@ -4,7 +4,7 @@
 
 function onSelectMeme(imgId) {
     const imgData = getMemeById(imgId)
-
+    
     const img = new Image()
     img.src = imgData.url
 
@@ -12,7 +12,7 @@ function onSelectMeme(imgId) {
         gMeme = {
             id: null,
             selectedImg: img,
-            selectedImgId: imgId,
+            selectedImgId: imgData.id,
             selectedLineIdx: 0,
             lines: [
                 {
@@ -128,11 +128,31 @@ async function uploadImg(imgData, onSuccess) {
 
 // onUpload
 function onMemeUpload(ev) {
-    loadMemeFromInput(ev, redrawCanvas)
     console.log('ev:', ev)
+    loadMemeFromInput(ev, img =>{
+        gMeme = {
+            id: null,
+            selectedImg: img,
+            selectedImgId: makeId(3),
+            selectedLineIdx: 0,
+            lines: [
+                {
+                    txt: 'Meme Text Here',
+                    size: 40,
+                    color: 'white',
+                    align: 'center',
+                    font: 'Impact',
+                    x: gElCanvas.width / 2,
+                    y: 50
+                }
+            ]
+        }
+
+        renderMeme()
+    })
 }
 function loadMemeFromInput(ev, onImageReady) {
-    document.querySelector('.share-container').innerHTML = ''
+    // document.querySelector('.share-container').innerHTML = ''
 
     const reader = new FileReader()
 

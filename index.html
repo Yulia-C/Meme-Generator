@@ -17,17 +17,17 @@
 
     <header class="main-header center">
         <div class="wrapper flex">
-            <img onclick="onSelectMeme(this)" class="rounded-m meme-img" class="main-logo" src="header/main-logo-2.png">
+            <img class="rounded-m meme-img" class="main-logo" src="header/main-logo-2.png">
             <button onclick="ontoggleMenu()" type="button" class="btn-toggle-menu"></button>
             <nav class="main-nav">
                 <ul class="">
                     <li class="galery active clean-li rounded" onclick="onInit()">
-                        <img onclick="onSelectMeme(this)" class="rounded-m meme-img" class="gallery"
+                        <img class="rounded-m meme-img" class="gallery"
                             src="header/gallery.png">
 
                     </li>
                     <li class="memes clean-li rounded" onclick="onSavedInit()">
-                        <img onclick="onSelectMeme(this)" class="rounded-m meme-img" class="memes"
+                        <img class="rounded-m meme-img" class="memes"
                             src="header/memes.png">
 
                     </li>
@@ -67,15 +67,19 @@
 
                 <div class="canvas-container">
                     <canvas width="600" height="500"
-                    onmousedown="onDown(event)" onmousemove="onMove(event)" onmouseup="onUp()"></canvas>
+                    onmousedown="onDown(event)" onmousemove="onMove(event)"
+                     onmouseup="onUp()"
+                     touchstart="onDown(event)"
+                     touchmove="onMove(event)"
+                     touchend="onUp()"></canvas>
                 </div>
                 <div class="tools-editor rounded-m">
                     <input oninput="onTypeText(this)" type="text" class="meme-input-text rounded" placeholder="Meme text here">
 
                     <div class="input-editors">
                         <button title="Switch" class="btn btn-input switch-input">
-                            <i onclick="onSwitchLine()" class="fa-solid fa-arrow-up-long"></i>
-                            <i onclick="onSwitchLine()" class="fa-solid fa-arrow-down-long"></i>
+                            <i onclick="onSwitchLine(1)" title="Up" class="fa-solid fa-arrow-up-long"></i>
+                            <i onclick="onSwitchLine(-1)" title="Down" class="fa-solid fa-arrow-down-long"></i>
                         </button>
                         <button onclick="onAddLine()" title="Add" class="btn btn-input add-input">
                             <i class="fa-solid fa-plus"></i>
