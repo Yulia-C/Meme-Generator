@@ -1,3 +1,7 @@
 .meme-saved-page {
-    width: 90%;
+    width: 93%;
+    grid-template-rows: auto;
+    margin-block-start: 8vh;
+    padding:2vw;
+    gap: 30px;
 }

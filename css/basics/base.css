@@ -1,4 +1,4 @@
-* {
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
@@ -9,7 +9,6 @@ html {
 }
 
 body {
-    /* display:grid; */
     text-align: center;
     font-size: 1rem;
     margin: 0;
@@ -19,7 +18,7 @@ body {
 
 }
 
-.meme-gallery-page, .meme-editor-page {
+.meme-gallery-page, .meme-editor-page, .meme-saved-page{
     background-color: var(--clr-primary-base-4);
     width: 95%;
 }
@@ -40,6 +39,10 @@ a {
 
 .main-nav>ul>li, .keyword, .file-input, img.rounded-m{
     cursor:pointer;
+}
+
+.main-logo{
+    height:5vh;
 }
 
 .colorPicker{

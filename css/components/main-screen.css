@@ -5,10 +5,9 @@
     cursor: pointer;
     pointer-events: none;
     opacity: 0;
-
+    
     transition: opacity 600ms;
 }
-
 
 body.menu-open .main-screen {
     opacity: 1;

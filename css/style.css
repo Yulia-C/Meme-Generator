@@ -5,12 +5,10 @@
 @import url('./basics/base.css');
 @import url('./basics/helpers.css');
 @import url('./basics/buttons.css');
-@import url('./basics/layout.css');
 
 /* Components */
 @import url('./components/header.css');
 @import url('./components/header-main-nav.css');
-@import url('./components/main-logo.css');
 @import url('./components/main-screen.css');
 @import url('./components/search.css');
 @import url('./components/key-words.css');

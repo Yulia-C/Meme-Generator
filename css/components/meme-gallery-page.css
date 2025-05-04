@@ -1,27 +1,25 @@
-
 .meme-container {
     margin-inline: 2em;
     gap: 1em;
     justify-items: center;
-
 }
 
 .meme-container>label {
     font-size:1.8em;
     padding: 30%;
-    border: 2px solid var(--clr-primary-base-1);
+    border: 2px solid var(--clr-primary-base-3);
     border-radius: 20px;
 }
 
 .meme-container>label:hover {
-    /* font-size: 1.9em; */
     color: var(--clr-primary-base-6);
     border: 2px solid var(--clr-primary-base-6);
 }
 
 .meme-img>img {
-    /* position:relative; */
     width: 100%;
+    height: auto;
+    display: block;
 }
 
 .meme-img>img:hover {

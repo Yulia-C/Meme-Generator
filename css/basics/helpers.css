@@ -4,6 +4,7 @@
     padding: 0;
     list-style-type: none;
 }
+
 /* layout helpers */
 .grid {
     display: grid;
@@ -12,7 +13,6 @@
 .grid.column {
     grid-template-columns: 1fr 1fr;
     gap: 1em;
-
 }
 
 .center {
@@ -21,18 +21,18 @@
 
 .margin-top {
     margin-block-start: 2em;
-    
 }
 
-.flex{
-    display:flex;
+/* flex helpers */
+.flex {
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 /* rounded helper */
 .rounded {
-    border-radius: 5em;
+    border-radius: 100vh;
 }
 
 /* meme helper */
@@ -40,9 +40,10 @@
     border-radius: 20px;
 }
 
-.selected{
+.selected {
     border: 2px solid var(--clr-primary-base-6);
-
 }
 
-
+.hidden {
+    display: none;
+}

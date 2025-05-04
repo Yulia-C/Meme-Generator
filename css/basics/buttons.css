@@ -8,11 +8,19 @@
     cursor: pointer;
 }
 
-.remove {
+.remove-btn {
     position: relative;
-    left: -45%;
-    bottom: -13%;
-    /* z-index: 1; */
+    top:6vh;
+    left: 50%;
+    margin-right: 40px;
+    background-color: transparent;
+    border:none;
+    color:var(--clr-primary-base-3);
+    font-size: 2rem;
+}
+
+.remove-btn:hover{
+    color:var(--clr-primary-base-6);
 }
 
 .keyword {
@@ -41,7 +49,6 @@
     width: 50px;
     height: 50px;
     opacity: 0;
-
 }
 
 .meme-line-clr>input {

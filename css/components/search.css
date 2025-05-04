@@ -1,18 +1,21 @@
 .filter-search-container {
-    /* position:relative; */
     display: grid;
     grid-template-columns: minmax(100%, 1fr);
 }
-
 
 .search-input {
     width: 98%;
     font-size: 2em;
     padding: .4em;
 
-    background-color: var(--clr-primary-base-1);
+    background-color: var(--clr-primary-base-2);
     color: whitesmoke;
     border: none;
+}
+
+.search-input:hover {
+    color: var(--clr-primary-base-6);
+    outline: 2px solid var(--clr-primary-base-6);
 }
 
 .fa-magnifying-glass{
