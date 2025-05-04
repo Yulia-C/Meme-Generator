@@ -1,7 +1,7 @@
 'use strict'
 
-function renderMemeGallery() {
-    const memeImgs = getMemeImgs()
+function renderMemeGallery(filteredImgs = null) {
+    const memeImgs = filteredImgs || getMemeImgs()
     // console.log('memeImgs:', memeImgs)
 
     const elMemeContainer = document.querySelector('.meme-container')
@@ -16,6 +16,4 @@ function renderMemeGallery() {
                     <img onclick="onSelectMeme(${meme.id})" class="rounded-m meme-img" src="memes-imgs/${meme.id}.jpg" alt="meme">
                     </article>`
         }).join('')}`
-
-
 }

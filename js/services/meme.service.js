@@ -33,6 +33,13 @@ function getMeme() {
 function getSavedMemes() {
     return gSavedMemes
 }
+function setFilterBy(txt) {
+    const lowerSearch = txt.toLowerCase()
+    var filteredImgs = gImgs.filter(img => {
+        return img.keywords.some(keyword => keyword.toLowerCase().includes(lowerSearch))
+    })
+    return filteredImgs
+}
 
 function getSavedMemeById(idx) {
     return gSavedMemes.find(meme => meme.id === idx)

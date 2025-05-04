@@ -28,9 +28,13 @@ function onSavedInit() {
     console.log('onSavedInIt');
 }
 
-function onSearchMeme(elMeme) {
-    console.log(elMeme);
+function onSearchMeme(txt) {
 
+    const filteredImgs = setFilterBy(txt)
+    renderMemeGallery(filteredImgs)
+
+    gSearchHistory.push(txt)
+    const updatedMap = updateKeywordSearchMap(gSearchHistory)
 }
 
 function onKeyWordPress(word) {
