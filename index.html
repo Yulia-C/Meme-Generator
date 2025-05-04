@@ -16,29 +16,28 @@
         <div class="wrapper flex">
             <img class="rounded-m main-logo" src="header/main-logo-2.png">
             <button onclick="ontoggleMenu()" type="button" class="btn-toggle-menu"></button>
-            <!-- <div class="backdrop"></div> -->
 
             <nav class="main-nav">
                 <ul class="">
-                    <li class="galery active clean-li rounded" onclick="onInit()">
-                        <img class="rounded-m meme-img" onclick="onInit()" class="gallery" src="header/gallery.png">
+                    <li onclick="onInit()" class="gallery clean-li rounded">
+                        <img class=" rounded-m meme-img" src="header/gallery.png">
 
                     </li>
-                    <li class="memes clean-li rounded" onclick="onSavedInit()">
-                        <img class="rounded-m meme-img" onclick="onSavedInit()" class="memes" src="header/memes.png">
+                    <li onclick="onSavedInit()" class="memes clean-li rounded">
+                        <img class="rounded-m meme-img" src="header/memes.png">
                     </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="meme-gallery-page grid center rounded-m margin-top" >
+    <section class="meme-gallery-page grid center rounded-m margin-top">
         <main>
             <section class="filter-search-container top">
                 <div class="search margin-top">
 
-                    <input type="text" class="search-input rounded" placeholder="Search Memes" 
-                    oninput="onSearchMeme(this.value)">
+                    <input type="text" class="search-input rounded" placeholder="Search Memes"
+                        oninput="onSearchMeme(this.value)">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <div class="key-words-container center margin-top rounded">
@@ -56,15 +55,15 @@
         </main>
     </section>
 
-    <section class="meme-editor-page center rounded-m margin-top">
+    <section class="meme-editor-page center rounded-m margin-top ">
         <main>
 
             <div class="edit-wrapper center">
 
-                <div class="canvas-container center margin-top">
-                    <canvas class="canvas center" width="600" height="400" onmousedown="onDown(event)" onmousemove="onMove(event)"
-                        onmouseup="onUp()" touchstart="onDown(event)" touchmove="onMove(event)"
-                        touchend="onUp()"></canvas>
+                <div class="canvas-container center">
+                    <canvas class="canvas center rounded-m" width="600" height="400" onmousedown="onDown(event)"
+                        onmousemove="onMove(event)" onmouseup="onUp()" touchstart="onDown(event)"
+                        touchmove="onMove(event)" touchend="onUp()"></canvas>
                 </div>
                 <div class="tools-editor rounded-m margin-top">
                     <input oninput="onTypeText(this)" type="text" class="meme-input-text rounded"
@@ -95,7 +94,7 @@
                         <button onclick="onSetTxtAlign('left')" class="btn btn-font"><i
                                 class="fa-solid fa-align-right"></i></button>
 
-                        <select onchange="onSetFont(this.value)" class="font-picker">
+                        <select onchange="onSetFont(this.value)" class="btn font-picker">
                             <option value="arial">Arial </option>
                             <option value="impact">Impact </option>
                             <option value="comic-sans">Comic Sans</option>
@@ -103,7 +102,7 @@
                             <option value="georgia">Georgia</option>
                             <option value="fa" class="fa">Fa</option>
                         </select>
-                    
+
                         <button class="btn meme-fill-clr">
                             <input oninput="onSetFillStyle(this.value)" type="color" class="colorPicker">
                             <i class="fa-solid fa-fill-drip"></i>
@@ -131,15 +130,16 @@
     </main>
     </section>
 
-    <section class="meme-saved-page grid column center">
+    <section class="meme-saved-page grid center rounded-m margin-top">
         <main></main>
     </section>
     <div class="share-container"></div>
-    <footer>
+    <footer class="flex margin-top">
         <p> All rights reserved - Yulia Chernyak 2025 ©</p>
         <section class="footer-social-nav">
-            <!-- <i class="fa-brands fa-linkedin social"></i>
-            <i class="fa-brands fa-square-github social"></i> -->
+            <a href="https://www.linkedin.com/in/yulia-chernyak-628211177/"> <i
+                    class="fa-brands fa-linkedin social"></i></a>
+            <a href="https://github.com/Yulia-C"><i class="fa-brands fa-github"></i></a>
         </section>
     </footer>
     <script src="js/services/utils.service.js"></script>
