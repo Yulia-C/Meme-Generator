@@ -4,20 +4,26 @@ let gElCanvas
 let gCtx
 let gIsDragging = false
 let gStartPos = null
+const STORAGE_MAIN = 'searchHistory'
+let gSearchHistory = []
+let gKeywordSearchCountMap = {}
+
 
 function onInit() {
     console.log('Hi');
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
-
     onResize()
     renderMeme()
     renderSavedMemes()
+    
+    loadSearchHistoryFromStorage()
+    
     renderMemeGallery()
-
-
+    onUpdateKeywordSize()
 }
+
 
 function onResize() {
     renderMeme()
@@ -38,7 +44,29 @@ function onSearchMeme(txt) {
 }
 
 function onKeyWordPress(word) {
-    console.log(word.innerText)
+    const txt = word.innerText.toLowerCase()
+
+    const elInput = document.querySelector('.search-input')
+    elInput.value = txt
+
+    onSearchMeme(txt)
+    gSearchHistory.push(txt)
+    gKeywordSearchCountMap = updateKeywordSearchMap(gSearchHistory)
+    saveToStorage(STORAGE_MAIN, gSearchHistory)
+
+    onUpdateKeywordSize()
+}
+
+function onUpdateKeywordSize() {
+    const keywordEls = document.querySelectorAll('.keyword')
+
+    keywordEls.forEach(el => {
+        const keyword = el.innerText.toLowerCase().trim()
+        const count = gKeywordSearchCountMap[keyword] || 1
+        const newFontSize = 16 + count * 2
+        el.style.fontSize = newFontSize + 'px'
+    })
+
 }
 
 function onTypeText(elTxt) {
@@ -50,6 +78,7 @@ function onTypeText(elTxt) {
     renderMeme()
 }
 
+// Need Fix
 function onSwitchLine() {
     const meme = getMeme()
     let lineIdx = meme.selectedLineIdx
@@ -62,7 +91,7 @@ function onSwitchLine() {
 
 function onAddLine() {
     console.log('onAddLine')
-    renderMeme({ showSelection: false })
+    // renderMeme({ showSelection: false })
     addTxtLine()
 
     renderMeme({ showSelection: true })
@@ -91,7 +120,7 @@ function onSetTxtAlign(align) {
 function onSetFont(elFont) {
     console.log('elFont:', elFont)
     setFontStyle(elFont)
-renderMeme()
+    renderMeme()
 }
 
 function onSetFillStyle(color) {
@@ -100,9 +129,10 @@ function onSetFillStyle(color) {
     renderMeme()
 
 }
+
 function onSetLineStyle(color) {
-     setFontLineColor(color)
-        console.log('LineColor', color);
+    setFontLineColor(color)
+    console.log('LineColor', color);
     renderMeme()
 
 }

@@ -10,33 +10,45 @@
 
 .remove {
     position: relative;
-    left: 260px;
-    bottom: -60px;
+    left: -45%;
+    bottom: -13%;
     /* z-index: 1; */
 }
 
-.meme-line-clr{
-    position: relative
+.keyword {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: whitesmoke;
 }
-.meme-fill-clr{
+
+.keyword:hover {
+    color: var(--clr-primary-base-6)
+}
+
+.meme-line-clr {
     position: relative
 }
 
-.meme-fill-clr > input{
+.meme-fill-clr {
+    position: relative
+}
+
+.meme-fill-clr>input {
     position: absolute;
-    left:-1px;
-    top:-1px;
-         width:50px;
-    height:50px;
+    left: -1px;
+    top: -1px;
+    width: 50px;
+    height: 50px;
     opacity: 0;
 
 }
-.meme-line-clr > input{
+
+.meme-line-clr>input {
     position: absolute;
-    left:-1px;
-    top:-1px;
-     width:50px;
-    height:50px;
+    left: -1px;
+    top: -1px;
+    width: 50px;
+    height: 50px;
     opacity: 0;
 }
-

@@ -21,19 +21,18 @@
             <nav class="main-nav">
                 <ul class="">
                     <li class="galery active clean-li rounded" onclick="onInit()">
-                        <img class="rounded-m meme-img" class="gallery" src="header/gallery.png">
+                        <img class="rounded-m meme-img" onclick="onInit()" class="gallery" src="header/gallery.png">
 
                     </li>
                     <li class="memes clean-li rounded" onclick="onSavedInit()">
-                        <img class="rounded-m meme-img" class="memes" src="header/memes.png">
-
+                        <img class="rounded-m meme-img" onclick="onSavedInit()" class="memes" src="header/memes.png">
                     </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="meme-gallery-page grid center rounded-m margin-top">
+    <section class="meme-gallery-page grid center rounded-m margin-top" >
         <main>
             <section class="filter-search-container top">
                 <div class="search margin-top">
@@ -43,11 +42,11 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <div class="key-words-container center margin-top rounded">
-                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-1"> Funny </a>
-                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-2"> Cartoon </a>
-                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-3"> Coding </a>
-                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-4"> Animal </a>
-                    <a href="#" onclick="onKeyWordPress(this)" class="keyword k-5">Cat </a>
+                    <button onclick="onKeyWordPress(this)" class="keyword k-1" value="funny"> Funny </button>
+                    <button onclick="onKeyWordPress(this)" class="keyword k-2" value="cartoon"> Cartoon </button>
+                    <button onclick="onKeyWordPress(this)" class="keyword k-3" value="coding"> Coding </button>
+                    <button onclick="onKeyWordPress(this)" class="keyword k-4" value="animal"> Animal </button>
+                    <button onclick="onKeyWordPress(this)" class="keyword k-5" value="cat">Cat </button>
                 </div>
             </section>
 

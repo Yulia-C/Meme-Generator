@@ -20,9 +20,8 @@ let gMeme = {
     ]
 }
 
-var gImgs
+let gImgs = _createMemeImgs(25)
 
-var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 //Crudl functions
 
@@ -33,12 +32,25 @@ function getMeme() {
 function getSavedMemes() {
     return gSavedMemes
 }
+
+function getMemeImgs() {
+    return gImgs
+}
+
 function setFilterBy(txt) {
     const lowerSearch = txt.toLowerCase()
     var filteredImgs = gImgs.filter(img => {
         return img.keywords.some(keyword => keyword.toLowerCase().includes(lowerSearch))
     })
     return filteredImgs
+}
+
+function updateKeywordSearchMap(searchHistory) {
+    return searchHistory.reduce((acc, keyword) => {
+        const key = keyword.toLowerCase()
+        acc[key] = (acc[key] || 0) + 1
+        return acc
+    }, {})
 }
 
 function getSavedMemeById(idx) {
@@ -138,9 +150,6 @@ function _createMemeImgs(count) {
     return memes
 }
 
-function getMemeImgs() {
-    return gImgs = _createMemeImgs(25)
-}
 
 function _createMemeImg(id = 1) {
     const meme = { id, url: `memes-imgs/${id}.jpg`, keywords: getKeyWords() }
