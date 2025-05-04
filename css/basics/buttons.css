@@ -1,11 +1,16 @@
 .btn {
     border-radius: 15px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     background-image: linear-gradient(-38deg, var(--clr-primary-base-6) 30%, #527279 100%);
     padding: .6rem;
-    color: var(--clr-primary-base-5);
+    color: var(--clr-primary-base-4);
     margin-inline: .31em;
     cursor: pointer;
+}
+
+.btn:hover{
+    color: var(--clr-primary-base-1);
+
 }
 
 .remove-btn {

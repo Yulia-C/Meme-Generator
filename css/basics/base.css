@@ -37,7 +37,7 @@ a {
     color: inherit;
 }
 
-.main-nav>ul>li, .keyword, .file-input, img.rounded-m{
+.main-nav>ul>li, .keyword, .file-input, img.rounded-m, input{
     cursor:pointer;
 }
 

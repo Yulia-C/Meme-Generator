@@ -15,7 +15,7 @@
         translate: 100%;
         transition: translate .7s;
     }
-    
+
     body.menu-open .main-nav {
         translate: 0;
     }
@@ -102,6 +102,14 @@
 
     .meme-saved-page {
         grid-template-columns: minmax(auto, 1fr) minmax(auto, 1fr);
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+        justify-self: center;
+        align-items: center;
+        width: 93%;
     }
 }
 

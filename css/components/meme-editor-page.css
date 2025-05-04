@@ -6,6 +6,7 @@
     gap: 20px;
     padding: 1em;
     width: 100%;
+    padding-inline: 3em;
 }
 
 .canvas-container {
@@ -24,7 +25,8 @@ canvas {
 }
 
 .tools-editor {
-    padding: 2em;
+    margin-bottom: 2em;
+    padding-block: 3vh;
     gap: 1em;
     display: flex;
     justify-content: space-evenly;

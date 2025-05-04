@@ -1,24 +1,14 @@
-footer {
-    background-color: var(--clr-primary-base-3);
-}
-
-footer p {
-    margin-inline-start: 3vw;
-}
-
-i {
-    font-size: 2em;
-    cursor:pointer;
-}
 
 .fa-github {
+    font-size: 2em;
+    cursor:pointer;
     background-color: black;
     border-radius: 50%;
     color: whitesmoke;
-    margin-inline-end: 3vw;
 }
 
 .fa-linkedin {
+    font-size: 2em;
     color: #0077b5;
     background-color: whitesmoke;
     border-radius: 3px;
