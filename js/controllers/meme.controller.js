@@ -1,9 +1,12 @@
 'use strict'
 
 
-
 function onSelectMeme(imgId) {
     const imgData = getMemeById(imgId)
+
+    gElMemeGallery.classList.add('hidden')
+    gElMemeEditor.classList.remove('hidden')
+    // gElSavedMemes.classList.add('hidden')
 
     const img = new Image()
     img.src = imgData.url
@@ -109,8 +112,8 @@ function renderSavedMemes() {
     elSavedMemes.innerHTML = memes.map(meme => {
         return `
         <article class="meme-img">
-            <button class="remove btn" onclick="onRemoveMeme('${meme.id}')">X</button>
-                    <img onclick="onSelectFromSaved('${meme.id}')" class="rounded-m meme-img" src="${meme.data}" alt="meme">
+            <button class="remove-btn" onclick="onRemoveMeme('${meme.id}')">X</button>
+                    <img onclick="onSelectFromSaved('${meme.id}')" class="rounded-m saved-meme-img" src="${meme.data}" alt="meme">
                 </article>`
     }).join('')
 }

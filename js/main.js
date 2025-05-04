@@ -4,7 +4,9 @@ let gElCanvas
 let gCtx
 let gIsDragging = false
 let gStartPos = null
+
 const STORAGE_MAIN = 'searchHistory'
+
 let gSearchHistory = []
 let gKeywordSearchCountMap = {}
 
@@ -14,12 +16,20 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
+    gElMemeGallery.classList.remove('hidden')
+    gElMemeEditor.classList.add('hidden')
+    gElSavedMemes.classList.add('hidden')
+
+    gElMemeNav.classList.remove('active')
+    gElGalleryNav.classList.add('active')
+
+
     onResize()
     renderMeme()
     renderSavedMemes()
-    
+
     loadSearchHistoryFromStorage()
-    
+
     renderMemeGallery()
     onUpdateKeywordSize()
 }
@@ -31,7 +41,15 @@ function onResize() {
 
 
 function onSavedInit() {
-    console.log('onSavedInIt');
+    gElMemeNav.classList.add('active')
+    gElGalleryNav.classList.remove('active')
+
+    gElSavedMemes.classList.remove('hidden')
+    gElMemeGallery.classList.add('hidden')
+    gElMemeEditor.classList.add('hidden')
+
+
+
 }
 
 function onSearchMeme(txt) {
@@ -63,7 +81,7 @@ function onUpdateKeywordSize() {
     keywordEls.forEach(el => {
         const keyword = el.innerText.toLowerCase().trim()
         const count = gKeywordSearchCountMap[keyword] || 1
-        const newFontSize = 16 + count * 2
+        const newFontSize = 14 + count 
         el.style.fontSize = newFontSize + 'px'
     })
 
