@@ -47,9 +47,6 @@ function onSavedInit() {
     gElSavedMemes.classList.remove('hidden')
     gElMemeGallery.classList.add('hidden')
     gElMemeEditor.classList.add('hidden')
-
-
-
 }
 
 function onSearchMeme(txt) {
@@ -193,15 +190,27 @@ function onUp() {
 }
 
 function getEvPos(ev) {
-    const clientX = ev.type.startsWith('touch') ? ev.touches[0].clientX : ev.clientX
-    const clientY = ev.type.startsWith('touch') ? ev.touches[0].clientY : ev.clientY
-    const rect = gElCanvas.getBoundingClientRect()
-    return {
-        x: ev.clientX - rect.left,
-        y: ev.clientY - rect.top
+    const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+  
+    let pos = {
+      x: ev.offsetX,
+      y: ev.offsetY,
     }
-}
-
+  
+    if (TOUCH_EVS.includes(ev.type)) {
+      // Prevent triggering the mouse ev
+      ev.preventDefault()
+      // Gets the first touch point
+      ev = ev.changedTouches[0]
+      // Calc the right pos according to the touch screen
+      pos = {
+        x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+        y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+      }
+    }
+    return pos
+  }
+  
 function getLineAtPos(pos) {
     return gMeme.lines.findIndex(line => {
         const textWidth = gCtx.measureText(line.txt).width
