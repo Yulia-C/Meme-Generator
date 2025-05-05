@@ -198,6 +198,9 @@ async function uploadImg(imgData, onSuccess) {
 // onUpload
 function onMemeUpload(ev) {
     console.log('ev:', ev)
+    gElMemeGallery.classList.add('hidden')
+    gElMemeEditor.classList.remove('hidden')
+    
     loadMemeFromInput(ev, img => {
         gMeme = {
             id: null,
