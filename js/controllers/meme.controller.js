@@ -158,6 +158,7 @@ function onDownloadMeme(elMeme) {
 
 // onShare
 function onShareMeme(platform, ev) {
+    renderMeme({ showSelection: false })
 
     const canvasData = gElCanvas.toDataURL('meme/jpeg')
     ev.preventDefault()
