@@ -1,12 +1,10 @@
 'use strict'
 
-
 function onSelectMeme(imgId) {
     const imgData = getMemeById(imgId)
 
     gElMemeGallery.classList.add('hidden')
     gElMemeEditor.classList.remove('hidden')
-    // gElSavedMemes.classList.add('hidden')
 
     const img = new Image()
     img.src = imgData.url
@@ -75,7 +73,8 @@ function drawTextBox(line) {
 
     if (line.align === 'center') {
         x -= textWidth / 2
-    } else if (line.align === 'right') {
+    }
+    else if (line.align === 'right') {
         x -= textWidth
     }
 
@@ -89,7 +88,6 @@ function drawTextBox(line) {
 
 }
 
-
 function onSaveMeme() {
 
     renderMeme({ showSelection: false })
@@ -100,7 +98,6 @@ function onSaveMeme() {
     addMeme(memeCopy)
     renderMeme({ showSelection: true })
     renderSavedMemes()
-    // console.log('Saving...');
 
     console.log('Saving...');
 }
@@ -119,6 +116,9 @@ function renderSavedMemes() {
 }
 
 function onSelectFromSaved(memeId) {
+    gElSavedMemes.classList.add('hidden')
+    gElMemeEditor.classList.remove('hidden')
+
     let savedMeme = getSavedMemeById(memeId)
     console.log('savedMeme:', savedMeme)
     const img = new Image()
@@ -140,7 +140,6 @@ function onRemoveMeme(memeIdx) {
     renderSavedMemes()
 }
 
-
 function updateInputPlaceholder() {
     const meme = getMeme()
     const currLine = meme.lines[meme.selectedLineIdx]
@@ -160,21 +159,37 @@ function onDownloadMeme(elMeme) {
 }
 
 // onShare
-function onShareMeme(ev) {
-    console.log('sharing...');
+function onShareMeme(platform, ev) {
 
-    ev.preventDefault()
     const canvasData = gElCanvas.toDataURL('meme/jpeg')
+    ev.preventDefault()
 
-    // After a succesful upload, allow the user to share on Facebook
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
         console.log('encodedUploadedImgUrl:', encodedUploadedImgUrl)
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`)
+        let shareUrl = ''
+        switch (platform) {
+            case 'facebook':
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`
+                break
+            case 'whatsapp':
+                shareUrl = `https://api.whatsapp.com/send?text=${encodedUploadedImgUrl}`
+                break
+            case 'telegram':
+                shareUrl = `https://t.me/share/url?url=${encodedUploadedImgUrl}`
+                break
+            case 'gmail':
+                shareUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=&su=Check out my meme!&body=${encodedUploadedImgUrl}`
+                break
+            default:
+                return
+        }
+        window.open(shareUrl, '_blank')
 
     }
     uploadImg(canvasData, onSuccess)
 }
+
 async function uploadImg(imgData, onSuccess) {
     const CLOUD_NAME = 'webify'
     const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
@@ -200,7 +215,7 @@ function onMemeUpload(ev) {
     console.log('ev:', ev)
     gElMemeGallery.classList.add('hidden')
     gElMemeEditor.classList.remove('hidden')
-    
+
     loadMemeFromInput(ev, img => {
         gMeme = {
             id: null,
