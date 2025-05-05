@@ -86,15 +86,16 @@ function getMemeById(memeIdx) {
 
 function addTxtLine() {
     const line = {
-        txt: 'Another Meme Text Here',
+        txt: 'Meme Text Here',
         size: 40,
         color: 'white',
         fill: 'black',
         align: 'center',
         font: 'Impact',
-        x: 300,
-        y: 250
+        x: gElCanvas.width / 2,
+        y: 50,
     }
+    
     gMeme.lines.push(line)
     gMeme.selectedLineIdx = gMeme.lines.length - 1
     _saveMemesToStorage()
@@ -106,11 +107,15 @@ function deleteTxtLine(lineIdx) {
     _saveMemesToStorage()
 }
 
-function switchLine(lineIdx) {
-    // let currLineIdx = gMeme.lines.findIndex(line => line.id === lineIdx)
-    // currLineIdx = gMeme.selectedLineIdx
-    //Need to improve
+function switchLine(diff) {
+    const allLines = gMeme.lines.length
+    if (allLines <= 1) return
+    gMeme.selectedLineIdx += diff
+
+    if (gMeme.selectedLineIdx < 0) gMeme.selectedLineIdx = allLines - 1
+    if (gMeme.selectedLineIdx >= allLines) gMeme.selectedLineIdx = 0
 }
+
 
 function updateLineSize(diff) {
     const idx = gMeme.selectedLineIdx
@@ -121,23 +126,28 @@ function updateLineSize(diff) {
 function setTextAlign(align) {
     const idx = gMeme.selectedLineIdx
     var currAlign = gMeme.lines[idx].align = align
+    _saveMemesToStorage()
+
 }
 
 function setFontStyle(font) {
     const idx = gMeme.selectedLineIdx
     var currStyle = gMeme.lines[idx].font = font
+    _saveMemesToStorage()
+
 }
 
 function setFontColor(color) {
     const idx = gMeme.selectedLineIdx
     var currColor = gMeme.lines[idx].color = color
+    _saveMemesToStorage()
 }
+
 function setFontLineColor(color) {
     const idx = gMeme.selectedLineIdx
     var currColor = gMeme.lines[idx].fill = color
+    _saveMemesToStorage()
 }
-
-
 
 //Factory functions
 
@@ -146,7 +156,6 @@ function _createMemeImgs(count) {
     for (var i = 0; i < count; i++) {
         memes[i] = _createMemeImg(i + 1)
     }
-    // console.log('memes:', memes)
     return memes
 }
 

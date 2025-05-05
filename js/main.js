@@ -78,7 +78,7 @@ function onUpdateKeywordSize() {
     keywordEls.forEach(el => {
         const keyword = el.innerText.toLowerCase().trim()
         const count = gKeywordSearchCountMap[keyword] || 1
-        const newFontSize = 14 + count 
+        const newFontSize = 14 + count
         el.style.fontSize = newFontSize + 'px'
     })
 
@@ -94,21 +94,15 @@ function onTypeText(elTxt) {
 }
 
 // Need Fix
-function onSwitchLine() {
-    const meme = getMeme()
-    let lineIdx = meme.selectedLineIdx
-    switchLine(lineIdx)
-    renderMeme()
-    console.log('lineIdx:', lineIdx)
-    // console.log('onSwitchLine')
-
+function onSwitchLine(diff) {
+    switchLine(diff)
+    renderMeme({ showSelection: true })
 }
 
 function onAddLine() {
     console.log('onAddLine')
     // renderMeme({ showSelection: false })
     addTxtLine()
-
     renderMeme({ showSelection: true })
 
 }
@@ -118,7 +112,6 @@ function onRemoveLine() {
     deleteTxtLine(lineIdx)
     console.log('onDeleteLine')
     renderMeme()
-
 }
 
 function onUpdateLineSize(diff) {
@@ -163,13 +156,11 @@ function onDown(ev) {
     gIsDragging = true
     gStartPos = pos
     document.body.style.cursor = 'grabbing'
-
 }
 
 function onMove(ev) {
     if (!gIsDragging) return
     const meme = getMeme()
-
 
     const pos = getEvPos(ev)
     const dx = pos.x - gStartPos.x
@@ -180,37 +171,37 @@ function onMove(ev) {
     line.y += dy
 
     gStartPos = pos
-    renderMeme()
 }
 
 function onUp() {
     gIsDragging = false
     document.body.style.cursor = 'grab'
-
+   
+    renderMeme()
 }
 
 function getEvPos(ev) {
     const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
-  
+
     let pos = {
-      x: ev.offsetX,
-      y: ev.offsetY,
+        x: ev.offsetX,
+        y: ev.offsetY,
     }
-  
+
     if (TOUCH_EVS.includes(ev.type)) {
-      // Prevent triggering the mouse ev
-      ev.preventDefault()
-      // Gets the first touch point
-      ev = ev.changedTouches[0]
-      // Calc the right pos according to the touch screen
-      pos = {
-        x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-        y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-      }
+        // Prevent triggering the mouse ev
+        ev.preventDefault()
+        // Gets the first touch point
+        ev = ev.changedTouches[0]
+        // Calc the right pos according to the touch screen
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+        }
     }
     return pos
-  }
-  
+}
+
 function getLineAtPos(pos) {
     return gMeme.lines.findIndex(line => {
         const textWidth = gCtx.measureText(line.txt).width
@@ -229,3 +220,9 @@ function ontoggleMenu() {
     console.log('onToggleMenu');
     document.body.classList.toggle('menu-open')
 }
+
+// function onShare(){
+//     const shareOptions = document.querySelector('.share-options')
+//     const shareBtn = document.querySelector.apply('.btn-share')
+//     shareOptions.classList.add('visible')
+// }
