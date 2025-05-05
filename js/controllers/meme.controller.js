@@ -99,12 +99,10 @@ function onSaveMeme() {
     renderMeme({ showSelection: true })
     renderSavedMemes()
 
-    console.log('Saving...');
 }
 
 function renderSavedMemes() {
     const memes = getSavedMemes()
-    // console.log('meme:', memes)
     const elSavedMemes = document.querySelector('.meme-saved-page')
     elSavedMemes.innerHTML = memes.map(meme => {
         return `
@@ -120,19 +118,19 @@ function onSelectFromSaved(memeId) {
     gElMemeEditor.classList.remove('hidden')
 
     let savedMeme = getSavedMemeById(memeId)
-    console.log('savedMeme:', savedMeme)
     const img = new Image()
+    img.src = `memes-imgs/${savedMeme.selectedImgId}.jpg`
+
     img.onload = () => {
         gMeme = {
             id: savedMeme.id,
             selectedImg: img,
-            selectedImgId: savedMeme.selectedImgId || null,
+            selectedImgId: savedMeme.selectedImgId,
             selectedLineIdx: savedMeme.selectedLineIdx || 0,
             lines: savedMeme.lines.map(line => ({ ...line }))
         }
         renderMeme()
     }
-    img.src = savedMeme.data
 }
 
 function onRemoveMeme(memeIdx) {
@@ -151,7 +149,6 @@ function updateInputPlaceholder() {
 
 // onDownload
 function onDownloadMeme(elMeme) {
-    console.log(elMeme);
     renderMeme({ showSelection: false })
 
     const dataUrl = gElCanvas.toDataURL()

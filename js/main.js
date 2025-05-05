@@ -12,7 +12,6 @@ let gKeywordSearchCountMap = {}
 
 
 function onInit() {
-    console.log('Hi');
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
@@ -215,7 +214,6 @@ function getLineAtPos(pos) {
         const xEnd = line.x + (textWidth / 2)
         const yStart = line.y - textHeight
         const yEnd = line.y + textHeight
-        console.log(' xStart,xEnd,yStart,yEnd ', pos, xStart, xEnd, yStart, yEnd)
 
         return (
             pos.x >= xStart &&

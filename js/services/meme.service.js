@@ -4,6 +4,7 @@ const STORAGE_KEY = 'memeDB'
 let gSavedMemes = loadFromStorage(STORAGE_KEY) || []
 let gMeme = {
     id: null,
+    selectedImg:null,
     selectedImgId: null,
     selectedLineIdx: 0,
     lines: [
@@ -37,24 +38,12 @@ function getMemeImgs() {
     return gImgs
 }
 
-function setFilterBy(txt) {
-    const lowerSearch = txt.toLowerCase()
-    var filteredImgs = gImgs.filter(img => {
-        return img.keywords.some(keyword => keyword.toLowerCase().includes(lowerSearch))
-    })
-    return filteredImgs
-}
-
-function updateKeywordSearchMap(searchHistory) {
-    return searchHistory.reduce((acc, keyword) => {
-        const key = keyword.toLowerCase()
-        acc[key] = (acc[key] || 0) + 1
-        return acc
-    }, {})
-}
 
 function getSavedMemeById(idx) {
     return gSavedMemes.find(meme => meme.id === idx)
+}
+function getMemeById(memeIdx) {
+    return gImgs.find(meme => meme.id === memeIdx)
 }
 
 function addMeme(meme) {
@@ -77,8 +66,20 @@ function removeMeme(memeId) {
     _saveMemesToStorage()
 }
 
-function getMemeById(memeIdx) {
-    return gImgs.find(meme => meme.id === memeIdx)
+function setFilterBy(txt) {
+    const lowerSearch = txt.toLowerCase()
+    var filteredImgs = gImgs.filter(img => {
+        return img.keywords.some(keyword => keyword.toLowerCase().includes(lowerSearch))
+    })
+    return filteredImgs
+}
+
+function updateKeywordSearchMap(searchHistory) {
+    return searchHistory.reduce((acc, keyword) => {
+        const key = keyword.toLowerCase()
+        acc[key] = (acc[key] || 0) + 1
+        return acc
+    }, {})
 }
 
 
