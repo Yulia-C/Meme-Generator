@@ -166,10 +166,12 @@ function onMove(ev) {
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
 
-    const line = meme.lines[meme.selectedLineIdx]
-    line.x += dx
-    line.y += dy
+    let linePos = getLineAtPos(pos)
+    linePos = meme.lines[meme.selectedLineIdx]
+    linePos.x += dx
+    linePos.y += dy
 
+    renderMeme()
     gStartPos = pos
 }
 
@@ -202,15 +204,24 @@ function getEvPos(ev) {
     return pos
 }
 
+
 function getLineAtPos(pos) {
+
     return gMeme.lines.findIndex(line => {
         const textWidth = gCtx.measureText(line.txt).width
-        const textHeight = line.size
+        const textHeight = line.size + 10
+
+        const xStart = line.x - textWidth
+        const xEnd = line.x + (textWidth / 2)
+        const yStart = line.y - textHeight
+        const yEnd = line.y + textHeight
+        console.log(' xStart,xEnd,yStart,yEnd ', pos, xStart, xEnd, yStart, yEnd)
+
         return (
-            pos.x >= line.x - textWidth / 2 &&
-            pos.x <= line.x + textWidth / 2 &&
-            pos.y >= line.y - textHeight &&
-            pos.y <= line.y
+            pos.x >= xStart &&
+            pos.x <= xEnd &&
+            pos.y >= yStart &&
+            pos.y <= yEnd
         )
     })
 }
@@ -221,8 +232,3 @@ function ontoggleMenu() {
     document.body.classList.toggle('menu-open')
 }
 
-// function onShare(){
-//     const shareOptions = document.querySelector('.share-options')
-//     const shareBtn = document.querySelector.apply('.btn-share')
-//     shareOptions.classList.add('visible')
-// }
