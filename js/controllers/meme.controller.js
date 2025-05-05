@@ -152,6 +152,7 @@ function updateInputPlaceholder() {
 // onDownload
 function onDownloadMeme(elMeme) {
     console.log(elMeme);
+    renderMeme({ showSelection: false })
 
     const dataUrl = gElCanvas.toDataURL()
     elMeme.href = dataUrl
