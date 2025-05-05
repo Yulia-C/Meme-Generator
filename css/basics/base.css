@@ -14,8 +14,6 @@ body {
     margin: 0;
     background-color: var(--clr-primary-base-1);
     color: whitesmoke;
-
-
 }
 
 .meme-gallery-page, .meme-editor-page, .meme-saved-page{

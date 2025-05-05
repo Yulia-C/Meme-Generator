@@ -19,12 +19,13 @@
 }
 
 canvas {
-    display: block;
+    /* display: block; */
     max-width: 100%;
     height: auto;
 }
 
 .tools-editor {
+    position: relative;
     margin-bottom: 2em;
     padding-block: 3vh;
     gap: 1em;
@@ -56,4 +57,18 @@ canvas {
     flex-wrap: wrap;
     justify-content: space-evenly;
     row-gap: 1em;
+}
+
+.share-container {
+    display: flex;
+    padding: 10px;
+}
+
+.share {
+    cursor: pointer;
+    opacity: .7;
+}
+
+.share:hover {
+    opacity: 1;
 }

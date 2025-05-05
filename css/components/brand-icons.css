@@ -1,17 +1,21 @@
-
 .fa-github {
     font-size: 2em;
-    cursor:pointer;
     background-color: black;
     border-radius: 50%;
     color: whitesmoke;
 }
 
 .fa-linkedin {
-    font-size: 2em;
+    font-size: 1.9em;
+
     color: #0077b5;
     background-color: whitesmoke;
     border-radius: 3px;
-    padding-inline: 1px;
+    padding-inline: 2px;
     margin-inline-end: 1vw;
 }
+
+.fa-brands {
+    cursor: pointer;
+}
+

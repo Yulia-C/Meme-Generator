@@ -71,8 +71,10 @@
 
                     <div class="input-editors">
                         <button title="Switch" class="btn btn-input switch-input">
-                            <i onclick="onSwitchLine()" title="Up" class="fa-solid fa-arrow-up-long"></i>
-                            <i onclick="onSwitchLine()" title="Down" class="fa-solid fa-arrow-down-long"></i>
+                            <i onclick="onSwitchLine(1)" title="Up" class="fa-solid fa-arrow-up-long"></i>
+                        </button>
+                        <button title="Switch" class="btn btn-input switch-input">
+                            <i onclick="onSwitchLine(-1)" title="Down" class="fa-solid fa-arrow-down-long"></i>
                         </button>
                         <button onclick="onAddLine()" title="Add" class="btn btn-input add-input">
                             <i class="fa-solid fa-plus"></i>
@@ -116,12 +118,31 @@
                     <div class="save-container">
                         <button onclick="onSaveMeme()" class="btn btn-save"><i class="fa-solid fa-floppy-disk"></i>
                             Save</button>
-                        <form method="POST" enctype="multipart/form-data" onsubmit="onShareMeme(event)">
-                            <button class="btn btn-share" type="submit"><i class="fa-solid fa-share-from-square"></i>
-                                Share</button>
-                            <button class="btn btn-download"><a class="btn" href="#" onclick="onDownloadMeme(this)"
-                                    download="file-name">
-                                    <i class="fa-solid fa-download"></i> Download</a></button>
+                        <!-- <div class="share-wrapper">
+
+                        </div> -->
+
+
+                        <button class="btn btn-download"><a href="#" onclick="onDownloadMeme(this)"
+                                download="file-name">
+                                <i class="fa-solid fa-download"></i> Download</a></button>
+
+                        <div class="share-wrapper">
+                            <div class="share-container">
+                                <a target="_blank" onclick="onShareMeme('gmail',event)" class="share">
+                                    <img class="gmail" src="header/gmail.png"></a>
+                                <a target="_blank" onclick="onShareMeme('facebook',event)" class="share">
+                                    <img class="facebook" src="header/facebook.png"></a>
+                                </a>
+                                </a>
+                                <a target="_blank" onclick="onShareMeme('whatsapp',event)" class="share">
+                                    <img class="whatsapp" src="header/whatsapp.png"></a>
+                                </a>
+                                <a target="_blank" onclick="onShareMeme('telegram',event)" class="share">
+                                    <img class="telegram" src="header/telegram.png"></a>
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
 
