@@ -116,6 +116,7 @@ function renderSavedMemes() {
 function onSelectFromSaved(memeId) {
     gElSavedMemes.classList.add('hidden')
     gElMemeEditor.classList.remove('hidden')
+    renderMeme({ showSelection: false })
 
     let savedMeme = getSavedMemeById(memeId)
     const img = new Image()
