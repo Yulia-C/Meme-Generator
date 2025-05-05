@@ -1,5 +1,5 @@
 .meme-editor-page {
-    margin-block-start: 15vh;
+    margin-block-start: 10vh;
 }
 
 .edit-wrapper {
@@ -19,13 +19,11 @@
 }
 
 canvas {
-    /* display: block; */
     max-width: 100%;
     height: auto;
 }
 
 .tools-editor {
-    position: relative;
     margin-bottom: 2em;
     padding-block: 3vh;
     gap: 1em;
@@ -38,7 +36,7 @@ canvas {
 
 .meme-input-text {
     width: 90%;
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding: .4rem;
     background-color: var(--clr-primary-base-1);
     color: whitesmoke;

@@ -33,6 +33,9 @@
         margin-block-start: 15vh;
         background-color: var(--clr-primary-base-1);
     }
+    .meme-editor-page{
+        width: 100%;
+    }
 
     .edit-wrapper {
         display: grid;
@@ -42,6 +45,9 @@
 
     .tools-editor {
         grid-row: 2;
+    }
+    .share {
+        opacity: 1;
     }
 
     .meme-saved-page {
@@ -78,10 +84,6 @@
 
     .meme-container {
         grid-template-columns: minmax(250px, 1fr) minmax(250px, 1fr);
-    }
-
-    .keyword {
-        /* font-size: 1.5em; */
     }
 
     .meme-container>label {
