@@ -12,6 +12,13 @@ let gKeywordSearchCountMap = {}
 
 
 function onInit() {
+    let gElMemeGallery = document.querySelector('.meme-gallery-page')
+    let gElMemeEditor = document.querySelector('.meme-editor-page')
+    let gElSavedMemes = document.querySelector('.meme-saved-page')
+    
+    const gElMemeNav = document.querySelector('.memes')
+    const gElGalleryNav = document.querySelector('.gallery')
+    
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
@@ -78,7 +85,11 @@ function onUpdateKeywordSize() {
         const keyword = el.innerText.toLowerCase().trim()
         const count = gKeywordSearchCountMap[keyword] || 1
         const newFontSize = 14 + count
-        el.style.fontSize = newFontSize + 'px'
+        if (newFontSize >= 40) return
+        else {
+
+            el.style.fontSize = newFontSize + 'px'
+        }
     })
 
 }
@@ -177,7 +188,7 @@ function onMove(ev) {
 function onUp() {
     gIsDragging = false
     document.body.style.cursor = 'grab'
-   
+
     renderMeme()
 }
 
