@@ -5,6 +5,8 @@
 
 .search-input {
     width: 98%;
+    height:8vh;
+
     font-size: 2em;
     padding: .4em;
 
@@ -18,18 +20,18 @@
     outline: 2px solid var(--clr-primary-base-6);
 }
 
-.fa-magnifying-glass{
+.fa-magnifying-glass {
     font-size: 1.8em;
     position: relative;
     right: -45%;
     top: -30%;
     transform: translate(-50%, -50%);
     color: var(--clr-primary-base-3);
-    transition: opacity 2s .2s  ;
+    transition: opacity 2s .2s;
     opacity: 1;
 }
 
 body.menu-open .fa-magnifying-glass {
-    transition: opacity .1s ;
+    transition: opacity .1s;
     opacity: 0;
 }
