@@ -12,6 +12,8 @@
 <body onload="onInit()" class="main-layout" onresize="onResize()">
     <div onclick="ontoggleMenu()" class="main-screen"> </div>
 
+<div class="flex-wrapper">
+
     <header class="main-header center">
         <div class="wrapper flex">
             <img onclick="onInit()" class="rounded-m main-logo" src="header/main-logo-2.png">
@@ -55,7 +57,7 @@
         </main>
     </section>
 
-    <section class="meme-editor-page center rounded-m margin-top ">
+    <section class="meme-editor-page center rounded-m margin-top">
         <main>
 
             <div class="edit-wrapper center">
@@ -118,10 +120,6 @@
                     <div class="save-container">
                         <button onclick="onSaveMeme()" class="btn btn-save"><i class="fa-solid fa-floppy-disk"></i>
                             Save</button>
-                        <!-- <div class="share-wrapper">
-
-                        </div> -->
-
 
                         <button class="btn btn-download"><a href="#" onclick="onDownloadMeme(this)"
                                 download="file-name">
@@ -144,18 +142,14 @@
                             </div>
                         </div>
                     </div>
-
-
-    </section>
-    </div>
-    </main>
     </section>
 
     <section class="meme-saved-page grid center rounded-m margin-top">
         <main></main>
     </section>
     <div class="share-container"></div>
-    <footer class=" margin-top">
+
+    <footer class="">
         <p> All rights reserved - Yulia Chernyak 2025 ©</p>
         <section class="footer-social-nav">
             <a href="https://www.linkedin.com/in/yulia-chernyak-628211177/"> <i
@@ -163,6 +157,8 @@
             <a href="https://github.com/Yulia-C"><i class="fa-brands fa-github"></i></a>
         </section>
     </footer>
+</div>
+
     <script src="js/services/utils.service.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/meme.service.js"></script>

@@ -1,14 +1,20 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 html {
+    height: 100%;
+
     line-height: 1.5;
     color: whitesmoke;
     font-family: Poppins, Arial;
 }
 
 body {
+    height: 100%;
+
     text-align: center;
     font-size: 1rem;
     margin: 0;
@@ -16,7 +22,17 @@ body {
     color: whitesmoke;
 }
 
-.meme-gallery-page, .meme-editor-page, .meme-saved-page{
+.flex-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.meme-gallery-page,
+.meme-editor-page,
+.meme-saved-page {
+    flex:1;
     background-color: var(--clr-primary-base-4);
     width: 95%;
 }
@@ -35,15 +51,16 @@ a {
     color: inherit;
 }
 
-.main-nav>ul>li, .keyword, .file-input, img.rounded-m, input{
-    cursor:pointer;
+.main-nav>ul>li,
+.keyword,
+.file-input,
+img.rounded-m,
+input {
+    cursor: pointer;
 }
 
-.colorPicker{
-    background-color: transparent; 
-    color:transparent;
+.colorPicker {
+    background-color: transparent;
+    color: transparent;
     border: transparent;
 }
-
-
-
