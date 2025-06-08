@@ -1,5 +1,11 @@
 'use strict'
 
+let gElMemeGallery
+let gElMemeEditor
+let gElSavedMemes
+let gElMemeNav
+let gElGalleryNav
+
 let gElCanvas
 let gCtx
 let gIsDragging = false
@@ -12,13 +18,13 @@ let gKeywordSearchCountMap = {}
 
 
 function onInit() {
-    let gElMemeGallery = document.querySelector('.meme-gallery-page')
-    let gElMemeEditor = document.querySelector('.meme-editor-page')
-    let gElSavedMemes = document.querySelector('.meme-saved-page')
-    
-    const gElMemeNav = document.querySelector('.memes')
-    const gElGalleryNav = document.querySelector('.gallery')
-    
+     gElMemeGallery = document.querySelector('.meme-gallery-page')
+     gElMemeEditor = document.querySelector('.meme-editor-page')
+     gElSavedMemes = document.querySelector('.meme-saved-page')
+
+     gElMemeNav = document.querySelector('.memes')
+     gElGalleryNav = document.querySelector('.gallery')
+
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
